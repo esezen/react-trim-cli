@@ -12,7 +12,8 @@ class Users {
 			newuser: { name: '', username: '' },
 			users: {
 				1: { name: 'Abdelrahman Salem', username: '@abubakir1997' },
-				2: { name: 'Enes Sezen', username: '@esezen' }
+				2: { name: 'Enes Sezen', username: '@esezen' },
+				3: { name: 'Omar Salem', username: '@omar94' }
 			}
 		}
 	}

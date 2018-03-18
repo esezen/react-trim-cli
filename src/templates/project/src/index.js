@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom'
 import { renderRoutes } from 'react-router-config'
 import { BrowserRouter } from 'react-router-dom'
 import registerServiceWorker from 'scripts/registerServiceWorker'
-import unMountLoader from 'scripts/unMountLoader'
 import Routes from './routes'
 
 /*
@@ -29,4 +28,3 @@ ReactDOM.render((
  */
 
 registerServiceWorker()
-unMountLoader()

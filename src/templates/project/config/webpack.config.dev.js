@@ -82,7 +82,7 @@ module.exports = {
 		// https://github.com/facebookincubator/create-react-app/issues/290
 		// `web` extension prefixes have been added for better support
 		// for React Native Web.
-		extensions: ['.jsc', '.jsm', '.jsv', '.web.js', '.mjs', '.js', '.rt', '.json', '.web.jsx', '.jsx', '.css', '.m.css', '.scss', '.m.scss'],
+		extensions: ['.jsc', '.jsm', '.jsv', '.m.css', '.m.scss', '.css', '.scss', '.web.js', '.mjs', '.js', '.json', '.web.jsx', '.jsx', '.rt'],
 		alias: {
 
 			// Support React Native Web
@@ -164,7 +164,7 @@ module.exports = {
 									cacheDirectory: true,
 								},
 							},
-							require.resolve('./loaders/jsc-loader'),
+							require.resolve('js-cntrl-loader'),
 						]
 					},
 					// Model Loader
@@ -181,7 +181,7 @@ module.exports = {
 									cacheDirectory: true,
 								},
 							},
-							require.resolve('./loaders/jsm-loader'),
+							require.resolve('js-model-loader'),
 						]
 					},
 					// View Loader
@@ -198,14 +198,12 @@ module.exports = {
 									cacheDirectory: true,
 								},
 							},
-							require.resolve('./loaders/jsv-post-loader'),
 							{
-								loader: require.resolve('react-templates-loader'),
+								loader: require.resolve('js-view-loader'),
 								options: {
 									modules: "es6"
 								}
-							},
-							require.resolve('./loaders/jsv-loader'),
+							}
 						]
 					},
 					// "postcss" loader applies autoprefixer to our CSS.

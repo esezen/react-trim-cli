@@ -2,7 +2,6 @@
 var program = require("commander");
 const fs = require("fs");
 const path = require("path");
-const gradient = require("gradient-string");
 
 const CURR_DIR = process.cwd();
 program
@@ -10,6 +9,7 @@ program
   .description("Create a new project with mvc structure")
   .action(function(folderName, cmd) {
     console.log("Creating a new project named: " + folderName);
+    console.log("\n$cd " + folderName + "\n$npm install");
     fs.mkdirSync(`${CURR_DIR}/${folderName}`);
     const templatePath = `${__dirname}/src/templates/project/`;
 

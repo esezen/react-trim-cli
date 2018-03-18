@@ -46,7 +46,6 @@ routes: [
 	{
 		path: '/feed',
 		component: Feed,
-		exact,
 	},
 	{
 		path: '*',

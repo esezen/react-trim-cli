@@ -29,7 +29,7 @@
 				</Button>
 			</Button.Group>
 		</Segment>
-		<Segment inverted textAlign='center'>
+		<Segment inverted textAlign='left'>
 			<Header inverted size='large'>Wait until you check out the code</Header>
 			Included is a fully functional MVC model with the power of React, Redux, and Templating behind it.
 			The Model, View, and Controller are completely seperated for more concise and reusable programs. 

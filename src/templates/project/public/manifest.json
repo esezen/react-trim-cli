@@ -1,6 +1,6 @@
 {
-  "short_name": "React Redux Wrapper",
-  "name": "React Redux Wrapper Sample Project",
+  "short_name": "react-trim",
+  "name": "React Trim Sample Project",
   "icons": [
     {
       "src": "favicon.ico",
