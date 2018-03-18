@@ -243,7 +243,6 @@ module.exports = {
 									],
 								},
 							},
-							require.resolve('cssimportant-loader')
 						],
 					},
 					{

@@ -256,7 +256,6 @@ module.exports = {
 												],
 											},
 										},
-										require.resolve('cssimportant-loader')
 									],
 								},
 								extractTextPluginOptions
@@ -334,7 +333,6 @@ module.exports = {
 												sourceMap: shouldUseSourceMap,
 											},
 										},
-										require.resolve('cssimportant-loader'),
 										{
 											loader: require.resolve('sass-loader'),
 											options: {

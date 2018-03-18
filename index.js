@@ -97,10 +97,10 @@ function createDirectoryContents(templatePath, newProjectPath) {
     const stats = fs.statSync(origFilePath);
 
     if (stats.isFile()) {
-      const contents = fs.readFileSync(origFilePath, "utf8");
+      const contents = fs.readFileSync(origFilePath);
 
       const writePath = `${CURR_DIR}/${newProjectPath}/${file}`;
-      fs.writeFileSync(writePath, contents, "utf8");
+      fs.writeFileSync(writePath, contents);
     } else if (stats.isDirectory()) {
       fs.mkdirSync(`${CURR_DIR}/${newProjectPath}/${file}`);
 
