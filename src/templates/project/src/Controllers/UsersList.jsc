@@ -1,0 +1,44 @@
+import autoBind from 'react-autobind'
+
+@View 'Views/UsersList'
+@Model 'Models/Users'
+@Actions { 
+	delUser, 
+	addUser, 
+	updateNewUser,
+	updateUser
+}
+class UsersList {
+	constructor() {
+		super()
+		autoBind(this)
+	}
+
+	addUser() {
+		this.props.addUser()
+		this.props.updateNewUser({
+			name: '',
+			username: ''
+		})
+	}
+
+	delUser(id) {
+		this.props.delUser(id)
+	}
+
+	updateUsername({ target }) {
+		this.props.updateNewUser({
+			username: `@${target.value}`
+		})
+	}
+
+	updateName({ target }) {
+		this.props.updateNewUser({
+			 name: target.value
+		})
+	}
+
+	render() {
+		return View.apply(this)
+	}
+}

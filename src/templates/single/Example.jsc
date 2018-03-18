@@ -1,0 +1,5 @@
+class Example {
+  render() {
+    return null;
+  }
+}

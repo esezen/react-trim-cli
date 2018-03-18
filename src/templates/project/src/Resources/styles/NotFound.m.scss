@@ -1,0 +1,9 @@
+$extraLarge: 150px;
+
+.ExtraLargeFont {
+	font-size: $extraLarge !important;
+}
+
+.LargeFont {
+	font-size: $extraLarge / 3 !important;
+}

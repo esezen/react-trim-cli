@@ -1,0 +1,25 @@
+@View 'Views/Example'
+@Model 'Models/Example'
+@Props { someProps }
+@Actions { toggleProps }
+class Example {
+	constructor() {
+		super()
+
+		this.state = {
+			someState: 'I am a State!',
+			someBool: false
+		}
+	}
+
+	toggleState() {
+		this.setState({
+			someState: !this.state.someBool ? 'I am a changed State!' : 'I am a State!',
+			someBool: !this.state.someBool
+		})
+	}
+
+	render() {
+		return View.apply(this)
+	}
+}

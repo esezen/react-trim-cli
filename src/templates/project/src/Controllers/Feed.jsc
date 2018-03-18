@@ -1,0 +1,17 @@
+import autoBind from 'react-autobind'
+import { Users } from 'Models/Users'
+
+@View 'Views/Feed'
+@Model 'Models/Feed'
+class Feed {
+	constructor() {
+		super()
+		autoBind(this)
+
+		this.users = Users
+	}
+
+	render() {
+		return View.apply(this)
+	}
+}

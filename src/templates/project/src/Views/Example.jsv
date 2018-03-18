@@ -1,0 +1,38 @@
+<rt-import component='Grid' from='semantic-ui-react' />
+<rt-import component='Segment' from='semantic-ui-react' />
+<rt-import component='Header' from='semantic-ui-react' />
+<rt-import component='Button' from='semantic-ui-react' />
+<rt-import component='Divider' from='semantic-ui-react' />
+
+<Grid centered doubling stackable verticalAlign='middle' id='grid'>
+	<Grid.Column width='8'>
+		<Segment inverted>
+			<Header inverted size='huge' textAlign='center' color='green'>
+				State
+				<Header.Subheader>{ this.state.someState }</Header.Subheader>
+			</Header>
+			<Header inverted size='huge' textAlign='center' color='blue'>
+				Redux Props
+				<Header.Subheader>{ this.props.someProps }</Header.Subheader>
+			</Header>
+			<Divider />
+			<Button.Group fluid inverted size='large'>
+				<Button 
+				color='green'
+				onClick={ this.toggleState.bind(this) }>
+					Toggle State Method
+				</Button>
+				<Button  
+				color='blue'  
+				onClick={ this.props.toggleProps }>
+					Toggle Props Dispatcher
+				</Button>
+			</Button.Group>
+		</Segment>
+		<Segment inverted textAlign='center'>
+			<Header inverted size='large'>Wait until you check out the code</Header>
+			Included is a fully functional MVC model with the power of React, Redux, and Templating behind it.
+			The Model, View, and Controller are completely seperated for more concise and reusable programs. 
+		</Segment>
+	</Grid.Column>
+</Grid>

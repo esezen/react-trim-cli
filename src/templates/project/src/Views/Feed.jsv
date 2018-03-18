@@ -1,0 +1,29 @@
+<rt-import component='Grid' from='semantic-ui-react' />
+<rt-import component='Segment' from='semantic-ui-react' />
+<rt-import component='Feed' from='semantic-ui-react' />
+<rt-import component='Icon' from='semantic-ui-react' />
+
+<Grid columns='1' padded='vertically' stackable centered>
+	<Grid.Column width='10' rt-for={ post, key in this.props.posts } key={ key }>
+		<Segment>
+			<Feed size='large'>
+				<Feed.Event>
+					<Feed.Content>
+						<Feed.Summary>
+							<Feed.User>{ this.users.getUser(post.user, 'name') }</Feed.User>
+							<Feed.Date>{ post.date }</Feed.Date>
+						</Feed.Summary>
+						<Feed.Meta>{ this.users.getUser(post.user, 'username') }</Feed.Meta>
+						<Feed.Extra>{ post.content }</Feed.Extra>
+						<Feed.Meta>
+							<Feed.Like>
+								<Icon name='like' />
+								{ post.likes } Like{ 's' if post.likes > 1 }
+							</Feed.Like>
+						</Feed.Meta>
+					</Feed.Content>
+				</Feed.Event>
+			</Feed>
+		</Segment>
+	</Grid.Column>
+</Grid>

@@ -1,0 +1,19 @@
+<rt-import component='Link' from='react-router-dom' />
+<rt-import component='Header' from='semantic-ui-react' />
+<rt-import component='Divider' from='semantic-ui-react' />
+<rt-import component='Route' from='react-router-dom' />
+<rt-import component='ExtraLargeFont' from='styles/NotFound.m.scss' />
+<rt-import component='LargeFont' from='styles/NotFound.m.scss' />
+
+<React.Fragment rt-stateless>
+	<Header className={ ExtraLargeFont } size='huge' textAlign='center' inverted>
+		404
+		<Header.Subheader className={ LargeFont }>
+			Page not Found
+		</Header.Subheader>
+	</Header>
+	<Divider />
+	<Header size='huge' textAlign='center'>
+		<Link to='/'>{ window.location.href }</Link>
+	</Header>
+</React.Fragment>

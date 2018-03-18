@@ -1,0 +1,44 @@
+<rt-import component='Segment' from='semantic-ui-react' />
+<rt-import component='Button' from='semantic-ui-react' />
+<rt-import component='Grid' from='semantic-ui-react' />
+<rt-import component='Icon' from='semantic-ui-react' />
+<rt-import component='Form' from='semantic-ui-react' />
+<rt-import component='Label' from='semantic-ui-react' />
+
+<Grid centered doubling stackable id='grid'>
+	<Grid.Column width='10'>
+		<Segment basic>
+			<Form>
+				<Form.Group widths='equal'>	
+					<Form.Input 
+					value={ this.props.newuser.name }
+					placeholder='Name' 
+					onInput={ this.updateName }/>
+					<Form.Input
+					value={ this.props.newuser.username.substr(1) }
+					placeholder='Username' 
+					onInput={ this.updateUsername }/>
+					<Form.Button fluid onClick={ this.addUser }>
+						{ this.props.status } User #{ this.props.id }
+					</Form.Button>
+				</Form.Group>
+			</Form>
+			<Segment.Group>
+				<Segment style='display: flex' rt-for={ user, id in this.props.users } key={ id }>
+					{ id }: { user.name } - { user.username }
+					<Button
+					circular
+					style='margin-left: auto'
+					size='tiny' 
+					icon='close' 
+					onClick={ this.delUser.bind(null, id)  } />
+					<Button
+					circular
+					size='tiny' 
+					icon='edit' 
+					onClick={ this.props.updateUser.bind(null, id)  } />
+				</Segment>
+			</Segment.Group>
+		</Segment>
+	</Grid.Column>
+</Grid>
