@@ -1,19 +1,47 @@
-<rt-import component='Grid' from='semantic-ui-react' />
-<rt-import component='Segment' from='semantic-ui-react' />
-<rt-import component='Feed' from='semantic-ui-react' />
-<rt-import component='Icon' from='semantic-ui-react' />
+<import component='Grid' from='semantic-ui-react' />
+<import component='Segment' from='semantic-ui-react' />
+<import component='Feed' from='semantic-ui-react' />
+<import component='Icon' from='semantic-ui-react' />
+<import component='Form' from='semantic-ui-react' />
 
 <Grid columns='1' padded='vertically' stackable centered>
-	<Grid.Column width='10' rt-for={ post, key in this.props.posts } key={ key }>
+	<Grid.Column width='10'>
+		<Form inverted>
+			<Form.Group>
+				<Form.Select 
+				fluid 
+				label='User' 
+				value={ this.state.post.user }
+				options={ this.getUsers() } 
+				onChange={ this.updatePostUser  }
+				placeholder='User'
+				width='14'
+				/>
+				<Form.Field width='2'>
+					<label>Submit</label>
+					<Form.Button 
+					fluid 
+					color='blue'
+					onClick={ this.submitPost }>Submit</Form.Button>
+				</Form.Field>
+			</Form.Group>
+			<Form.TextArea 
+			value={ this.state.post.content }
+			onChange={ this.updatePostContent }
+			label='Post' 
+			placeholder='Write to the world!' />
+		</Form>
+	</Grid.Column>
+	<Grid.Column width='10' @for={ post, key in this.props.postsWithUsers() } key={ key }>
 		<Segment>
 			<Feed size='large'>
 				<Feed.Event>
 					<Feed.Content>
 						<Feed.Summary>
-							<Feed.User>{ this.users.getUser(post.user, 'name') }</Feed.User>
+							<Feed.User>{ post.user.name }</Feed.User>
 							<Feed.Date>{ post.date }</Feed.Date>
 						</Feed.Summary>
-						<Feed.Meta>{ this.users.getUser(post.user, 'username') }</Feed.Meta>
+						<Feed.Meta>{ post.user.username  }</Feed.Meta>
 						<Feed.Extra>{ post.content }</Feed.Extra>
 						<Feed.Meta>
 							<Feed.Like>

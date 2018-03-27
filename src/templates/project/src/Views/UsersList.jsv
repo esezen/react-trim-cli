@@ -1,9 +1,9 @@
-<rt-import component='Segment' from='semantic-ui-react' />
-<rt-import component='Button' from='semantic-ui-react' />
-<rt-import component='Grid' from='semantic-ui-react' />
-<rt-import component='Icon' from='semantic-ui-react' />
-<rt-import component='Form' from='semantic-ui-react' />
-<rt-import component='Label' from='semantic-ui-react' />
+<import component='Segment' from='semantic-ui-react' />
+<import component='Button' from='semantic-ui-react' />
+<import component='Grid' from='semantic-ui-react' />
+<import component='Icon' from='semantic-ui-react' />
+<import component='Form' from='semantic-ui-react' />
+<import component='Label' from='semantic-ui-react' />
 
 <Grid centered doubling stackable id='grid'>
 	<Grid.Column width='10'>
@@ -24,19 +24,19 @@
 				</Form.Group>
 			</Form>
 			<Segment.Group>
-				<Segment style='display: flex' rt-for={ user, id in this.props.users } key={ id }>
-					{ id }: { user.name } - { user.username }
+				<Segment style='display: flex' @for={ user, id in this.props.getWithExtraProp() } key={ id }>
+					{ user.id }: { user.name } - { user.username } - { user.school }
 					<Button
 					circular
 					style='margin-left: auto'
 					size='tiny' 
 					icon='close' 
-					onClick={ this.delUser.bind(null, id)  } />
+					onClick={ this.delUser.bind(null, user.id) } />
 					<Button
 					circular
 					size='tiny' 
 					icon='edit' 
-					onClick={ this.props.updateUser.bind(null, id)  } />
+					onClick={ this.props.updateUser.bind(null, user.id)  } />
 				</Segment>
 			</Segment.Group>
 		</Segment>

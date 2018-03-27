@@ -1,14 +1,62 @@
 import autoBind from 'react-autobind'
-import { Users } from 'Models/Users'
 
 @View 'Views/Feed'
 @Model 'Models/Feed'
+@Actions {
+	submitPost,
+	postsWithUsers,
+	getUsers
+}
 class Feed {
 	constructor() {
 		super()
 		autoBind(this)
 
-		this.users = Users
+		this.state = {
+			post: {
+				user: '',
+				content: ''
+			}
+		}
+	}
+
+	getUsers() {
+		const users = this.props.getUsers()
+
+		return Object.keys(users).map(id => ({
+			key: id,
+			value: id,
+			description: users[id].username,
+			text: users[id].name
+		}))
+	}
+
+	submitPost() {
+		this.props.submitPost(this.state.post)
+		this.setState({
+			post: {
+				user: '',
+				content: ''
+			}
+		})
+	}
+
+	updatePostUser(e, { value }) {
+		this.setState({
+			post: {
+				...this.state.post,
+				user: value
+			}
+		})
+	}
+
+	updatePostContent(e, { value }) {
+		this.setState({
+			post: {
+				...this.state.post,
+				content: value
+			}
+		})
 	}
 
 	render() {

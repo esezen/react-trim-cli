@@ -1,11 +1,11 @@
-<rt-import component='Link' from='react-router-dom' />
-<rt-import component='Header' from='semantic-ui-react' />
-<rt-import component='Divider' from='semantic-ui-react' />
-<rt-import component='Route' from='react-router-dom' />
-<rt-import component='ExtraLargeFont' from='styles/NotFound.m.scss' />
-<rt-import component='LargeFont' from='styles/NotFound.m.scss' />
+<import component='Link' from='react-router-dom' />
+<import component='Header' from='semantic-ui-react' />
+<import component='Divider' from='semantic-ui-react' />
+<import component='Route' from='react-router-dom' />
+<import component='ExtraLargeFont' from='styles/NotFound.m.scss' />
+<import component='LargeFont' from='styles/NotFound.m.scss' />
 
-<React.Fragment rt-stateless>
+<React.Fragment @stateless>
 	<Header className={ ExtraLargeFont } size='huge' textAlign='center' inverted>
 		404
 		<Header.Subheader className={ LargeFont }>

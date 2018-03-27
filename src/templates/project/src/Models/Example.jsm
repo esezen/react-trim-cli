@@ -7,9 +7,10 @@ class Example {
 	 | the controllers layer.
 	 |
 	 */
-	
-	state() {
-		return {
+
+	constructor() {
+		this.state = {
+			execute: true,
 			someProps: 'I am a Props!',
 			someBool: false
 		}
@@ -30,6 +31,25 @@ class Example {
 
 	/*
 	 | --------------------------------------------------------
+	 | Async Actions
+	 | --------------------------------------------------------
+	 | Asynchronous Actions can dispatch Actions
+	 | after within an Asynchronous process.
+	 |
+	 */
+
+	@async
+	asyncToggleProps() {
+		if (this.state.execute) {
+			setTimeout(() => {
+				this.state.execute = false
+				this.toggleProps.dispatch()
+			}, 1000)
+		}
+	}
+
+	/*
+	 | --------------------------------------------------------
 	 | Actions
 	 | --------------------------------------------------------
 	 | Actions manipulate the state and are dispatched from
@@ -37,11 +57,11 @@ class Example {
 	 |
 	 */
 
-	toggleProps(state, payload) {
-		return {
-			...state,
-			someProps: !state.someBool ? 'I am a changed Props!' : this.getInital(),
-			someBool: !state.someBool
-		}
+	@action
+	toggleProps() {
+		this.state.someBool = !this.state.someBool
+		this.state.someProps = this.state.someBool
+			? 'I am a changed Props!'
+			: this.getInital()
 	}
 }

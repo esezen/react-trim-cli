@@ -2,16 +2,27 @@ import autoBind from 'react-autobind'
 
 @View 'Views/UsersList'
 @Model 'Models/Users'
-@Actions { 
-	delUser, 
-	addUser, 
+@Actions {
+	delUser,
+	addUser,
 	updateNewUser,
-	updateUser
+	updateUser,
+	asyncAppendUser,
+	asyncUpdateName,
+	getWithExtraProp
 }
 class UsersList {
 	constructor() {
 		super()
 		autoBind(this)
+	}
+
+	componentDidMount() {
+		this.props.asyncUpdateName()
+		this.props.asyncAppendUser({
+			name: 'Async User',
+			username: '@async'
+		})
 	}
 
 	addUser() {

@@ -1,24 +1,24 @@
-<rt-import component='renderRoutes' from='react-router-config' />
-<rt-import component='Link' from='react-router-dom' />
-<rt-import component='Menu' from='semantic-ui-react' />
-<rt-import default='isRoute' from='scripts/routes' />
+<import component='renderRoutes' from='react-router-config' />
+<import component='Link' from='react-router-dom' />
+<import component='Menu' from='semantic-ui-react' />
+<import default='isRoute' from='scripts/routes' />
 
-<rt-load from='styles/semantic/semantic.min.css' />
-<rt-load from='styles/Template.css' />
+<load from='styles/semantic/semantic.min.css' />
+<load from='styles/Template.css' />
 
-<React.Fragment rt-stateless>
-	<Menu inverted color='red' fixed='top'>
+<React.Fragment @stateless>
+    <Menu inverted color='red' fixed='top'>
         <Menu.Item as={ Link } to='/' active={ isRoute('/') }>
-          Basic Example
+        Basic Example
         </Menu.Item>
 
         <Menu.Item as={ Link } to='/users' active={ isRoute('/users') }>
-          Users Example
+        Users Example
         </Menu.Item>
 
         <Menu.Item as={ Link } to='/feed' active={ isRoute('/feed') }>
-          News Feed Example
+        News Feed Example
         </Menu.Item>
-      </Menu>
-	{ renderRoutes(props.route.routes) }
+    </Menu>
+    { renderRoutes(props.route.routes) }
 </React.Fragment>

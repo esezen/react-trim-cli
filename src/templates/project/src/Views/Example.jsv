@@ -1,8 +1,8 @@
-<rt-import component='Grid' from='semantic-ui-react' />
-<rt-import component='Segment' from='semantic-ui-react' />
-<rt-import component='Header' from='semantic-ui-react' />
-<rt-import component='Button' from='semantic-ui-react' />
-<rt-import component='Divider' from='semantic-ui-react' />
+<import component='Grid' from='semantic-ui-react' />
+<import component='Segment' from='semantic-ui-react' />
+<import component='Header' from='semantic-ui-react' />
+<import component='Button' from='semantic-ui-react' />
+<import component='Divider' from='semantic-ui-react' />
 
 <Grid centered doubling stackable verticalAlign='middle' id='grid'>
 	<Grid.Column width='8'>
@@ -19,12 +19,12 @@
 			<Button.Group fluid inverted size='large'>
 				<Button 
 				color='green'
-				onClick={ this.toggleState.bind(this) }>
+				onClick={ this.toggleState }>
 					Toggle State Method
 				</Button>
 				<Button  
 				color='blue'  
-				onClick={ this.props.toggleProps }>
+				onClick={ this.toggleProps }>
 					Toggle Props Dispatcher
 				</Button>
 			</Button.Group>
