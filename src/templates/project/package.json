@@ -1,6 +1,6 @@
 {
 	"name": "react-trim",
-	"version": "1.5.4",
+	"version": "1.5.5",
 	"dependencies": {
 		"autoprefixer": "7.1.6",
 		"babel-core": "6.26.0",
@@ -28,8 +28,8 @@
 		"html-webpack-plugin": "2.29.0",
 		"jest": "20.0.4",
 		"js-cntrl-loader": "^1.0.3",
-		"js-model-loader": "^1.4.6",
-		"js-view-loader": "^1.1.2",
+		"js-model-loader": "^1.5.9",
+		"js-view-loader": "^1.1.4",
 		"jsdom": "^11.6.2",
 		"lodash": "^4.17.5",
 		"moment": "^2.21.0",
