@@ -1,5 +1,7 @@
 class Example {
   render() {
-    return null;
+    // Specify: @View 'path/to/view'
+    // Then: return View.apply(this)
+    return null
   }
 }
