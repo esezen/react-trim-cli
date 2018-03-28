@@ -54,20 +54,23 @@ class Feed {
 		}))
 	}
 
-	@async 
+	@async
 	getUsers() {
 		return Users.state.users
 	}
 
 	@action
 	submitPost(post) {
-		this.state.posts = [
-			...this.state.posts,
-			{
-				date: this.getToday(),
-				likes: 0,
-				...post
-			}
-		]
+    this.setState({
+      posts: {
+        $push: [
+          {
+            date: this.getToday(),
+            likes: 0,
+            ...post
+          }
+        ]
+      }
+    })
 	}
 }

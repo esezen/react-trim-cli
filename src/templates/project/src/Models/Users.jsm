@@ -48,7 +48,7 @@ class Users {
 	 | Async Actions
 	 | --------------------------------------------------------
 	 */
-	
+
 	@async
 	getWithExtraProp() {
 		return Object.keys(this.state.users).map(key => ({
@@ -58,37 +58,57 @@ class Users {
 		}))
 	}
 
-	@async 
+	@async
 	asyncAppendUser(user) {
 		if (this.state.execute) {
 			setTimeout(() => {
-				// Reset State Before Dispatch 
+				// Reset State Before Dispatch
 				// this.state.newProp will not sync
 				this.reset.dispatch(() => {
-					this.state.execute = false
+					this.removeExecute.commit()
 					this.appendUser.dispatch(user)
 				})
 			}, 1000)
-		} 
+		}
 	}
 
 	@async
 	asyncUpdateName() {
 		if (this.state.update) {
 			setTimeout(() => {
-				this.state.update = false
-				this.state.users[1] = { 
-					username: this.getUser(1, 'username'),
-					name: 'Abdelrahman Salem (Abu Bakr)' 
-				}
+				this.setState({
+          update: {
+            $set: false
+          },
+          users: {
+            1: {
+              $set: {
+                username: this.getUser(1, 'username'),
+                name: 'Abdelrahman Salem (Abu Bakr)'
+              }
+            }
+          }
+        })
 
-				this.sync.dispatch() // Sync Previous State Manipulation
-				this.state.newProp = true // Will Sync with Next @Action Dispatch
+        // Sync Previous State Manipulation
+        this.sync.dispatch()
+
+        // This update will Sync with Next @Action Dispatch
+        this.setState({
+          $merge: {
+            newProp: true
+          }
+        })
 
 				// You can dispatch a reset to the state by calling this.reset.dispatch()
 			}, 1000)
 		}
 	}
+
+  @command
+  iff(array, original) {
+    return array[0] ? array[1] : original
+  }
 
 	/*
 	 | --------------------------------------------------------
@@ -96,56 +116,100 @@ class Users {
 	 | --------------------------------------------------------
 	 */
 
+  @action
+  removeExecute() {
+    this.setState({
+      execute: {
+        $set: false
+      }
+    })
+  }
+
 	@action
 	appendUser(user) {
-		const newId = this.getNewId()
+    const newId = this.getNewId()
 
-		this.state.users[newId] = user
-
-		if(this.state.status !== 'Update') {
-			this.state.id = newId + 1
-		}
+    this.setState({
+      id: {
+        $iff: [
+          this.state.status !== 'Update',
+          newId + 1
+        ]
+      },
+      users: {
+        [newId]: {
+          $set: user
+        }
+      }
+    })
 	}
 
 	@action
 	updateUser(id) {
-		this.state.id = Number(id)
-		this.state.status = 'Update'
-		this.state.newuser = this.state.users[id]
+    this.setState({
+      id: {
+        $set: Number(id)
+      },
+      status: {
+        $set: 'Update'
+      },
+      newuser: {
+        $set: this.state.users[id]
+      }
+    })
 	}
 
 	@action
 	delUser(id) {
-		this.state.users = Object
-			.keys(this.state.users)
-			.filter(key => key !== id)
-			.reduce((obj, key) => {
-				obj[key] = this.state.users[key]
-				return obj
-			}, {});
+    this.setState({
+      users: {
+        $unset: [ id ]
+      }
+    })
 
-		this.state.id = this.getNewId()
+    // Seperated to generate newId after removal
+
+    this.setState({
+      id: {
+        $set: this.getNewId()
+      }
+    })
 	}
 
 	@action
 	addUser() {
-		const name = this.state.newuser.name.trim()
-		const username = this.state.newuser.username.trim()
+    const name = this.state.newuser.name.trim()
+    const username = this.state.newuser.username.trim()
 
-		this.state.users[this.state.id] = {
-			name: name.length > 0 ? name : 'Empty',
-			username: username.length > 1 ? username : '@empty'
-		}
+    this.setState({
+      status: {
+        $set: 'Add'
+      },
+      users: {
+        [this.state.id]: {
+          $set: {
+            name: name.length > 0 ? name : 'Empty',
+            username: username.length > 1 ? username : '@empty'
+          }
+        }
+      }
+    })
 
-		this.state.status = 'Add'
-		this.state.id = this.getNewId()
-	}
+    // Seperated to generate newId after addition
+
+    this.setState({
+      id: {
+        $set: this.getNewId()
+      }
+    })
+  }
 
 	@action
 	updateNewUser(payload) {
-		this.state.newuser = {
-			...this.state.newuser,
-			...payload
-		}
+		this.setState({
+      newuser: {
+        $merge: payload
+  		}
+    })
 	}
 }
