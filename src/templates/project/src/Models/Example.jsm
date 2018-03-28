@@ -49,7 +49,8 @@ class Example {
           }
         })
 
-				this.toggleProps.dispatch()
+				this.toggleProps()
+        this.syncState()
 			}, 1000)
 		}
 	}

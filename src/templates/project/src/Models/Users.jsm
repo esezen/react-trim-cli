@@ -64,10 +64,10 @@ class Users {
 			setTimeout(() => {
 				// Reset State Before Dispatch
 				// this.state.newProp will not sync
-				this.reset.dispatch(() => {
-					this.removeExecute.commit()
-					this.appendUser.dispatch(user)
-				})
+				this.resetState()
+        this.removeExecute()
+        this.appendUser(user)
+        this.syncState()
 			}, 1000)
 		}
 	}
@@ -91,7 +91,7 @@ class Users {
         })
 
         // Sync Previous State Manipulation
-        this.sync.dispatch()
+        this.syncState()
 
         // This update will Sync with Next @Action Dispatch
         this.setState({
