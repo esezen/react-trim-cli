@@ -1,6 +1,6 @@
 {
 	"name": "react-trim",
-	"version": "1.5.8",
+	"version": "1.5.9",
 	"dependencies": {
 		"autoprefixer": "7.1.6",
 		"babel-core": "6.26.0",
@@ -29,7 +29,7 @@
 		"immutability-helper": "^2.6.6",
 		"jest": "20.0.4",
 		"js-cntrl-loader": "^1.0.3",
-		"js-model-loader": "^2.7.15",
+		"js-model-loader": "^2.7.17",
 		"js-view-loader": "^1.1.4",
 		"jsdom": "^11.6.2",
 		"lodash": "^4.17.5",
