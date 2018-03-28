@@ -18,7 +18,23 @@ class Users {
 				3: { name: 'Omar Salem', username: '@omar94' }
 			}
 		}
+
+    /**
+     * This binds an onChange listener so when `this.state.users`
+     * changes the `this.updateId` method is executed.
+     */
+    this.onChange('users', this.updateId)
 	}
+
+  updateId() {
+    if (this.state.status !== 'Update') {
+      this.setState({
+        id: {
+          $set: this.getNewId()
+        }
+      })
+    }
+  }
 
 	/*
 	 | --------------------------------------------------------
@@ -166,14 +182,6 @@ class Users {
         $unset: [ id ]
       }
     })
-
-    // Seperated to generate newId after removal
-
-    this.setState({
-      id: {
-        $set: this.getNewId()
-      }
-    })
 	}
 
 	@action
@@ -192,14 +200,6 @@ class Users {
             username: username.length > 1 ? username : '@empty'
           }
         }
-      }
-    })
-
-    // Seperated to generate newId after addition
-
-    this.setState({
-      id: {
-        $set: this.getNewId()
       }
     })
   }
