@@ -95,10 +95,21 @@ function createDirectoryContents(templatePath, newProjectPath) {
     const origFilePath = `${templatePath}/${file}`;
 
     const stats = fs.statSync(origFilePath);
-
+    let contents = null;
     if (stats.isFile()) {
-      const contents = fs.readFileSync(origFilePath);
+      if (file === "package.json") {
+        contents = fs.readFileSync(origFilePath, "utf8");
+        if (contents.slice(12, 22) === "react-trim") {
+          contents =
+            contents.slice(0, 47) + '"private": true,\n' + contents.slice(47);
+          contents = contents.slice(0, 38) + "0.1.0" + contents.slice(43);
 
+          contents =
+            contents.slice(0, 12) + newProjectPath + contents.slice(22);
+        }
+      } else {
+        contents = fs.readFileSync(origFilePath);
+      }
       const writePath = `${CURR_DIR}/${newProjectPath}/${file}`;
       fs.writeFileSync(writePath, contents);
     } else if (stats.isDirectory()) {
