@@ -1,6 +1,8 @@
 import autoBind from 'react-autobind'
 
-@View 'Views/UsersList'
+@Views {
+  Main: 'Views/UsersList'
+}
 @Model 'Models/Users'
 @Actions {
 	delUser,
@@ -50,6 +52,17 @@ class UsersList {
 	}
 
 	render() {
-		return View.apply(this)
+    /*
+     |
+     | You can define multiple views to one controller
+     | ----------------------------------------------
+     | Views.Main() <=> <Views.Main />
+     | ----------------------------------------------
+     | The Views variable is also accessible within
+     | the View Layer
+     |
+     */
+
+		return Views.Main()
 	}
 }
