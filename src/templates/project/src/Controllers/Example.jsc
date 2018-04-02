@@ -2,8 +2,6 @@ import autoBind from 'react-autobind'
 
 @View 'Views/Example'
 @Model 'Models/Example'
-@Props { someProps }
-@Actions { toggleProps }
 class Example {
     constructor() {
         super()
@@ -16,9 +14,7 @@ class Example {
     }
 
     componentDidMount() {
-        // this.props.model('asyncToggleProps') <=> this.props.asyncToggleProps()
-        // Before using this.props.asyncToggleProps, add it to @Actions above
-        this.props.model('asyncToggleProps')
+        this.model.asyncToggleProps()
     }
 
     toggleState() {
@@ -29,7 +25,7 @@ class Example {
     }
 
     toggleProps() {
-        this.props.toggleProps()
+        this.model.toggleProps()
     }
 
     render() {

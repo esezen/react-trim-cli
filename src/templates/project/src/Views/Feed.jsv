@@ -8,31 +8,31 @@
 	<Grid.Column width='10'>
 		<Form inverted>
 			<Form.Group>
-				<Form.Select 
-				fluid 
-				label='User' 
+				<Form.Select
+				fluid
+				label='User'
 				value={ this.state.post.user }
-				options={ this.getUsers() } 
+				options={ this.getUsers() }
 				onChange={ this.updatePostUser  }
 				placeholder='User'
 				width='14'
 				/>
 				<Form.Field width='2'>
 					<label>Submit</label>
-					<Form.Button 
-					fluid 
+					<Form.Button
+					fluid
 					color='blue'
 					onClick={ this.submitPost }>Submit</Form.Button>
 				</Form.Field>
 			</Form.Group>
-			<Form.TextArea 
+			<Form.TextArea
 			value={ this.state.post.content }
 			onChange={ this.updatePostContent }
-			label='Post' 
+			label='Post'
 			placeholder='Write to the world!' />
 		</Form>
 	</Grid.Column>
-	<Grid.Column width='10' @for={ post, key in this.props.postsWithUsers() } key={ key }>
+	<Grid.Column width='10' @for={ post, key in this.model.postsWithUsers() } key={ key }>
 		<Segment>
 			<Feed size='large'>
 				<Feed.Event>

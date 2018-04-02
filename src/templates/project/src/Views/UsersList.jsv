@@ -9,34 +9,34 @@
 	<Grid.Column width='10'>
 		<Segment basic>
 			<Form>
-				<Form.Group widths='equal'>	
-					<Form.Input 
-					value={ this.props.newuser.name }
-					placeholder='Name' 
+				<Form.Group widths='equal'>
+					<Form.Input
+					value={ this.model.state.newuser.name }
+					placeholder='Name'
 					onInput={ this.updateName }/>
 					<Form.Input
-					value={ this.props.newuser.username.substr(1) }
-					placeholder='Username' 
+					value={ this.model.state.newuser.username.substr(1) }
+					placeholder='Username'
 					onInput={ this.updateUsername }/>
 					<Form.Button fluid onClick={ this.addUser }>
-						{ this.props.status } User #{ this.props.id }
+						{ this.model.state.status } User #{ this.model.state.id }
 					</Form.Button>
 				</Form.Group>
 			</Form>
 			<Segment.Group>
-				<Segment style='display: flex' @for={ user, id in this.props.getWithExtraProp() } key={ id }>
+				<Segment style='display: flex' @for={ user, id in this.model.getWithExtraProp() } key={ id }>
 					{ user.id }: { user.name } - { user.username } - { user.school }
 					<Button
 					circular
 					style='margin-left: auto'
-					size='tiny' 
-					icon='close' 
+					size='tiny'
+					icon='close'
 					onClick={ this.delUser.bind(null, user.id) } />
 					<Button
 					circular
-					size='tiny' 
-					icon='edit' 
-					onClick={ this.props.updateUser.bind(null, user.id)  } />
+					size='tiny'
+					icon='edit'
+					onClick={ () => this.model.updateUser(user.id)  } />
 				</Segment>
 			</Segment.Group>
 		</Segment>

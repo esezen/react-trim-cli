@@ -23,7 +23,7 @@ class Users {
 
     updateId(prevState) {
         if (this.state.status !== 'Update') {
-            this.changeState({
+            this.setState({
                 id: { $set: this.getNewId() }
             })
         }
@@ -134,6 +134,7 @@ class Users {
         const username = this.state.newuser.username.trim()
 
         this.setState({
+            id: { $set: this.getNewId() },
             status: { $set: 'Add' },
             users: {
                 [this.state.id]: {
