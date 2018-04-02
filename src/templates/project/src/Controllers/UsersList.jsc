@@ -5,64 +5,73 @@ import autoBind from 'react-autobind'
 }
 @Model 'Models/Users'
 @Actions {
-	delUser,
-	addUser,
-	updateNewUser,
-	updateUser,
-	asyncAppendUser,
-	asyncUpdateName,
-	getWithExtraProp
+    delUser,
+    addUser,
+    updateNewUser,
+    updateUser,
+    asyncAppendUser,
+    getWithExtraProp
 }
 class UsersList {
-	constructor() {
-		super()
-		autoBind(this)
-	}
+    constructor() {
+        super()
+        autoBind(this)
+    }
 
-	componentDidMount() {
-		this.props.asyncUpdateName()
-		this.props.asyncAppendUser({
-			name: 'Async User',
-			username: '@async'
-		})
-	}
+    componentDidMount() {
+        this.props.asyncAppendUser({
+            name: 'Async User',
+            username: '@async'
+        })
+    }
 
-	addUser() {
-		this.props.addUser()
-		this.props.updateNewUser({
-			name: '',
-			username: ''
-		})
-	}
+    addUser() {
+        this.props.addUser()
+        this.props.updateNewUser({
+            name: '',
+            username: ''
+        })
+    }
 
-	delUser(id) {
-		this.props.delUser(id)
-	}
+    delUser(id) {
+        this.props.delUser(id)
+    }
 
-	updateUsername({ target }) {
-		this.props.updateNewUser({
-			username: `@${target.value}`
-		})
-	}
+    updateUsername({ target }) {
+        this.props.updateNewUser({
+            username: `@${target.value}`
+        })
+    }
 
-	updateName({ target }) {
-		this.props.updateNewUser({
-			 name: target.value
-		})
-	}
+    updateName({ target }) {
+        this.props.updateNewUser({
+            name: target.value
+        })
+    }
 
-	render() {
-    /*
-     |
-     | You can define multiple views to one controller
-     | ----------------------------------------------
-     | Views.Main() <=> <Views.Main />
-     | ----------------------------------------------
-     | The Views variable is also accessible within
-     | the View Layer
-     |
-     */
+    render() {
+        /*
+         |
+         | You can define multiple views to one controller
+         | ----------------------------------------------
+         | Views.Main() <=> <Views.Main />
+         | ----------------------------------------------
+         | The Views variable is also accessible within
+         | the View Layer
+         | ----------------------------------------------
+         | The first argument in the function call is the
+         | props and the second argument is the context.
+         |
+         | Views.Main({
+         |    ...props
+         | }, context)
+         |
+         | Note: all views by default are binded to their
+         | respective controllers. Also to access passed
+         | props only in the view, use prop.someProp not
+         | this.props.someProp.
+         */
 
-		return Views.Main()
-	}
+        return Views.Main()
+   }
 }

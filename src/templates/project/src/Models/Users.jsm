@@ -1,215 +1,156 @@
 class Users {
-	/*
-	 | --------------------------------------------------------
-	 | State
-	 | --------------------------------------------------------
-	 */
-
-	constructor() {
-		this.state = {
-			id: 4,
-			execute: true,
-			update: true,
-			status: 'Add',
-			newuser: { name: '', username: '' },
-			users: {
-				1: { name: 'Abdelrahman Salem', username: '@abubakir1997' },
-				2: { name: 'Enes Sezen', username: '@esezen' },
-				3: { name: 'Omar Salem', username: '@omar94' }
-			}
-		}
-
-    /**
-     * This binds an onChange listener so when `this.state.users`
-     * changes the `this.updateId` method is executed.
-     */
-    this.onChange('users', this.updateId)
-	}
-
-  updateId() {
-    if (this.state.status !== 'Update') {
-      this.setState({
-        id: {
-          $set: this.getNewId()
-        }
-      })
-    }
-  }
-
-	/*
-	 | --------------------------------------------------------
-	 | Helpers
-	 | --------------------------------------------------------
-	 */
-
-	getNewId() {
-		const ids = Object.keys(this.state.users)
-		const lastId = Number(ids[ids.length - 1])
-
-		return lastId ? lastId + 1 : 1
-	}
-
-	getUser(id, type = null) {
-		var user = this.state.users[id]
-
-		if (user === undefined) {
-			user = { name: 'DNE', username: '@dne' }
-		}
-
-		return type === null ? user : user[type]
-	}
-
-	/*
-	 | --------------------------------------------------------
-	 | Async Actions
-	 | --------------------------------------------------------
-	 */
-
-	@async
-	getWithExtraProp() {
-		return Object.keys(this.state.users).map(key => ({
-			...this.state.users[key],
-			id: key,
-			school: 'Drexel'
-		}))
-	}
-
-	@async
-	asyncAppendUser(user) {
-		if (this.state.execute) {
-			setTimeout(() => {
-				// Reset State Before Dispatch
-				// this.state.newProp will not sync
-				this.resetState()
-        this.removeExecute()
-        this.appendUser(user)
-        this.syncState()
-			}, 1000)
-		}
-	}
-
-	@async
-	asyncUpdateName() {
-		if (this.state.update) {
-			setTimeout(() => {
-				this.setState({
-          update: {
-            $set: false
-          },
-          users: {
-            1: {
-              $set: {
-                username: this.getUser(1, 'username'),
-                name: 'Abdelrahman Salem (Abu Bakr)'
-              }
+    constructor() {
+        this.state = {
+            id: 4,
+            execute: true,
+            update: true,
+            status: 'Add',
+            newuser: { name: '', username: '' },
+            users: {
+                1: { name: 'Abdelrahman Salem', username: '@abubakir1997' },
+                2: { name: 'Enes Sezen', username: '@esezen' },
+                3: { name: 'Omar Salem', username: '@omar94' }
             }
-          }
-        })
+        }
 
-        // Sync Previous State Manipulation
-        this.syncState()
+        /**
+         * This binds an onChange listener so when `this.state.users`
+         * changes the `this.updateId` method is executed.
+         */
 
-        // This update will Sync with Next @Action Dispatch
+        this.onChange('users', this.updateId)
+    }
+
+    updateId(prevState) {
+        if (this.state.status !== 'Update') {
+            this.changeState({
+                id: { $set: this.getNewId() }
+            })
+        }
+    }
+
+    /*
+    | --------------------------------------------------------
+    | Helpers
+    | --------------------------------------------------------
+    */
+
+    getNewId() {
+        const ids = Object.keys(this.state.users)
+        const lastId = Number(ids[ids.length - 1])
+
+        return lastId ? lastId + 1 : 1
+    }
+
+    getUser(id, type = null) {
+        var user = this.state.users[id]
+
+        if (user === undefined) {
+            user = { name: 'DNE', username: '@dne' }
+        }
+
+        return type === null ? user : user[type]
+    }
+
+    getWithExtraProp() {
+        return Object.keys(this.state.users).map(key => ({
+            ...this.state.users[key],
+            id: key,
+            school: 'Drexel'
+        }))
+    }
+
+    /*
+    | --------------------------------------------------------
+    | Async Actions
+    | --------------------------------------------------------
+    */
+
+    asyncAppendUser(user) {
+        if (this.state.execute) {
+            setTimeout(() => {
+                this.removeExecute()
+                this.appendUser(user)
+            }, 1000)
+        }
+    }
+
+    /*
+    | --------------------------------------------------------
+    | Commands
+    | --------------------------------------------------------
+    */
+
+    @command
+    iff(array, original) {
+        return array[0] ? array[1] : original
+    }
+
+    /*
+    | --------------------------------------------------------
+    | Actions
+    | --------------------------------------------------------
+    */
+
+    removeExecute() {
         this.setState({
-          $merge: {
-            newProp: true
-          }
+            execute: { $set: false
+            }
         })
+    }
 
-				// You can dispatch a reset to the state by calling this.reset.dispatch()
-			}, 1000)
-		}
-	}
+    appendUser(user) {
+        const newId = this.getNewId()
 
-  @command
-  iff(array, original) {
-    return array[0] ? array[1] : original
-  }
+        this.setState({
+            id: {
+                $iff: [
+                    this.state.status !== 'Update',
+                    newId + 1
+                ]
+            },
+            users: {
+                [newId]: { $set: user }
+            }
+        })
+    }
 
-	/*
-	 | --------------------------------------------------------
-	 | Actions
-	 | --------------------------------------------------------
-	 */
+    updateUser(id) {
+        this.setState({
+            id: { $set: Number(id) },
+            status: { $set: 'Update' },
+            newuser: { $set: this.state.users[id] }
+        })
+    }
 
-  @action
-  removeExecute() {
-    this.setState({
-      execute: {
-        $set: false
-      }
-    })
-  }
+    delUser(id) {
+        this.setState({
+            users: { $unset: [ id ] }
+        })
+    }
 
-	@action
-	appendUser(user) {
-    const newId = this.getNewId()
+    addUser() {
+        const name = this.state.newuser.name.trim()
+        const username = this.state.newuser.username.trim()
 
-    this.setState({
-      id: {
-        $iff: [
-          this.state.status !== 'Update',
-          newId + 1
-        ]
-      },
-      users: {
-        [newId]: {
-          $set: user
-        }
-      }
-    })
-	}
+        this.setState({
+            status: { $set: 'Add' },
+            users: {
+                [this.state.id]: {
+                    $set: {
+                        name: name.length > 0 ? name : 'Empty',
+                        username: username.length > 1 ? username : '@empty'
+                    }
+                }
+            }
+        })
+    }
 
-	@action
-	updateUser(id) {
-    this.setState({
-      id: {
-        $set: Number(id)
-      },
-      status: {
-        $set: 'Update'
-      },
-      newuser: {
-        $set: this.state.users[id]
-      }
-    })
-	}
-
-	@action
-	delUser(id) {
-    this.setState({
-      users: {
-        $unset: [ id ]
-      }
-    })
-	}
-
-	@action
-	addUser() {
-    const name = this.state.newuser.name.trim()
-    const username = this.state.newuser.username.trim()
-
-    this.setState({
-      status: {
-        $set: 'Add'
-      },
-      users: {
-        [this.state.id]: {
-          $set: {
-            name: name.length > 0 ? name : 'Empty',
-            username: username.length > 1 ? username : '@empty'
-          }
-        }
-      }
-    })
-  }
-
-	@action
-	updateNewUser(payload) {
-		this.setState({
-      newuser: {
-        $merge: payload
-  		}
-    })
-	}
+    updateNewUser(payload) {
+        this.setState({
+            newuser: {
+                $merge: payload
+            }
+        })
+    }
 }

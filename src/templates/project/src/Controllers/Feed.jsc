@@ -3,71 +3,71 @@ import autoBind from 'react-autobind'
 @View 'Views/Feed'
 @Model 'Models/Feed'
 @Actions {
-	submitPost,
-	postsWithUsers,
-	getUsers
+    submitPost,
+    postsWithUsers,
+    getUsers
 }
 class Feed {
-	constructor() {
-		super()
-		autoBind(this)
+    constructor() {
+        super()
+        autoBind(this)
 
-		this.state = {
-			post: {
-				user: '',
-				content: ''
-			}
-		}
-	}
+        this.state = {
+            post: {
+                user: '',
+                content: ''
+            }
+        }
+    }
 
-	getUsers() {
-		const users = this.props.getUsers()
+    getUsers() {
+        const users = this.props.getUsers()
 
-		return Object.keys(users).map(id => ({
-			key: id,
-			value: id,
-			description: users[id].username,
-			text: users[id].name
-		}))
-	}
+        return Object.keys(users).map(id => ({
+            key: id,
+            value: id,
+            description: users[id].username,
+            text: users[id].name
+        }))
+    }
 
-	submitPost() {
-		this.props.submitPost(this.state.post)
-		this.setState({
-			post: {
-				user: '',
-				content: ''
-			}
-		})
-	}
+    submitPost() {
+        this.props.submitPost(this.state.post)
+        this.setState({
+            post: {
+                user: '',
+                content: ''
+            }
+        })
+    }
 
-	updatePostUser(e, { value }) {
-		this.setState({
-			post: {
-				...this.state.post,
-				user: value
-			}
-		})
-	}
+    updatePostUser(e, { value }) {
+        this.setState({
+            post: {
+                ...this.state.post,
+                user: value
+            }
+        })
+    }
 
-	updatePostContent(e, { value }) {
-		this.setState({
-			post: {
-				...this.state.post,
-				content: value
-			}
-		})
-	}
+    updatePostContent(e, { value }) {
+        this.setState({
+            post: {
+                ...this.state.post,
+                content: value
+            }
+        })
+    }
 
-	render() {
-    /*
-     |
-     | The View can be called as a function or as JSX
-     | ----------------------------------------------
-     | View() <=> <View />
-     |
-     */
+    render() {
+        /*
+         |
+         | The View can be called as a function or as JSX
+         | ----------------------------------------------
+         | View() <=> <View />
+         |
+         */
 
-		return <View />
-	}
+        return <View />
+    }
 }

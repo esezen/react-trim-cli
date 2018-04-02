@@ -3,37 +3,36 @@ import autoBind from 'react-autobind'
 @View 'Views/Example'
 @Model 'Models/Example'
 @Props { someProps }
-@Actions {
-	toggleProps,
-	asyncToggleProps
-}
+@Actions { toggleProps }
 class Example {
-	constructor() {
-		super()
-		autoBind(this)
+    constructor() {
+        super()
+        autoBind(this)
 
-		this.state = {
-			someState: 'I am a State!',
-			someBool: false
-		}
-	}
+        this.state = {
+            someState: 'I am a State!',
+            someBool: false
+        }
+    }
 
-	componentDidMount() {
-		this.props.asyncToggleProps()
-	}
+    componentDidMount() {
+        // this.props.model('asyncToggleProps') <=> this.props.asyncToggleProps()
+        // Before using this.props.asyncToggleProps, add it to @Actions above
+        this.props.model('asyncToggleProps')
+    }
 
-	toggleState() {
-		this.setState({
-			someState: !this.state.someBool ? 'I am a changed State!' : 'I am a State!',
-			someBool: !this.state.someBool
-		})
-	}
+    toggleState() {
+        this.setState({
+            someState: !this.state.someBool ? 'I am a changed State!' : 'I am a State!',
+            someBool: !this.state.someBool
+        })
+    }
 
-	toggleProps() {
-		this.props.toggleProps()
-	}
+    toggleProps() {
+        this.props.toggleProps()
+    }
 
-	render() {
-		return View()
-	}
+    render() {
+        return View()
+    }
 }

@@ -17,13 +17,13 @@
 			</Header>
 			<Divider />
 			<Button.Group fluid inverted size='large'>
-				<Button 
+				<Button
 				color='green'
 				onClick={ this.toggleState }>
 					Toggle State Method
 				</Button>
-				<Button  
-				color='blue'  
+				<Button
+				color='blue'
 				onClick={ this.toggleProps }>
 					Toggle Props Dispatcher
 				</Button>
@@ -32,7 +32,7 @@
 		<Segment inverted textAlign='left'>
 			<Header inverted size='large'>Wait until you check out the code</Header>
 			Included is a fully functional MVC model with the power of React, Redux, and Templating behind it.
-			The Model, View, and Controller are completely seperated for more concise and reusable programs. 
+			The Model, View, and Controller are completely seperated for more concise and reusable programs.
 		</Segment>
 	</Grid.Column>
 </Grid>
