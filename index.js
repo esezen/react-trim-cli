@@ -1,5 +1,7 @@
 #!/usr/bin/env node
-var program = require("commander");
+const program = require("commander");
+const colors = require('colors');
+const boxen = require('boxen');
 const fs = require("fs");
 const path = require("path");
 
@@ -8,8 +10,37 @@ program
   .command("new <projectName>")
   .description("Create a new project with mvc structure")
   .action(function(folderName, cmd) {
-    console.log("Creating a new project named: " + folderName);
-    console.log("\n$cd " + folderName + "\n$npm install");
+    if (fs.existsSync(`${CURR_DIR}/${folderName}`)) {
+      console.log(boxen("This Directory " + `${CURR_DIR}/${folderName}`.bold.red + " Already Exists", {
+        padding: 1, 
+        borderColor: 'red' 
+      }));
+
+      return;
+    }
+
+    console.log("Creating a new React trim app in " + (CURR_DIR + '/' + folderName + '/').bold.green + "\n");
+    
+    console.log(boxen('All Complete!'.bold.green, {
+      padding: 1, 
+      borderColor: 'green' 
+    }));
+
+    console.log("\nCommands to run within application directory:");
+
+    console.log("\n   npm start".bold.blue);
+    console.log("      Starts the development server.".bold)
+    
+    console.log("\n   npm run build".bold.blue);
+    console.log("      Bundles the app into static files for production.".bold);
+
+    console.log("\n   npm test".bold.blue);
+    console.log("      Starts the test runner.".bold);
+    
+    console.log("\nTo begin, type the following:".bold);
+    console.log("\n   cd " + (CURR_DIR + '/' + folderName + '/').bold.green);
+    console.log("   npm install".bold.blue);
+
     fs.mkdirSync(`${CURR_DIR}/${folderName}`);
     const templatePath = `${__dirname}/src/templates/project/`;
 
