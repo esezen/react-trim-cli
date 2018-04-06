@@ -1,9 +1,17 @@
-import { Model } from 'react-trim'
+/*
+| --------------------------------------------------------
+| LOADER FILE
+| --------------------------------------------------------
+| The following file is using the `js-model-loader` to
+| automate some code like setting Commands using the @command
+| Decorator. Checkout other file in the Models folder that
+| don't use the `js-model-loader` with a `.js` extension to
+| understand a little better how `react-trim` works.
+|
+*/
 
-class Users extends Model {
+class Users {
     constructor() {
-        super()
-
         this.state = {
             id: 4,
             execute: true,
@@ -16,12 +24,6 @@ class Users extends Model {
                 3: { name: 'Omar Salem', username: '@omar94' }
             }
         }
-
-        /**
-         * Create a custom command to use in your setState object
-         */
-
-        this.setCommand(this.iff)
 
         /**
          * This binds an onChange listener so when `this.state.users`
@@ -89,8 +91,10 @@ class Users extends Model {
     | --------------------------------------------------------
     | Commands
     | --------------------------------------------------------
+    | Create a custom command to use in your setState object
     */
 
+    @command
     iff(array, original) {
         return array[0] ? array[1] : original
     }
@@ -164,5 +168,3 @@ class Users extends Model {
         })
     }
 }
-
-export default new Users()

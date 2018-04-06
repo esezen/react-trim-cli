@@ -1,8 +1,6 @@
-# React Trim
+# React Trim Application Template
 
-Included is a fully functional MVC model with the power of React, Redux, and Templating behind it. The Model, View, and Controller are completely seperated for more concise and reusable programs.
-
-> Wait until you see the code reduction
+The following is a template for `react-trim` npm package.
 
 ## React Trim CLI
 

@@ -1,11 +1,21 @@
-import { Controller } from 'react-trim'
-import autoBind from 'react-autobind'
-import view from 'Views/Feed'
-import model from 'Models/Feed'
+/*
+| --------------------------------------------------------
+| LOADER FILE
+| --------------------------------------------------------
+| The following file is using the `js-cntrl-loader` to
+| automate some code like extending Controller class.
+| Checkout other file in the Controller folder that don't
+| use the `js-cntrl-loader` with a `.js` extension to
+| understand a little better how `react-trim` works.
+|
+*/
 
-class Feed extends Controller {
+import autoBind from 'react-autobind'
+
+@View 'Views/Feed'
+@Model 'Models/Feed'
+class Feed {
     constructor() {
-        super({ view, model })
         autoBind(this)
 
         this.state = {
@@ -55,5 +65,3 @@ class Feed extends Controller {
         })
     }
 }
-
-export default Feed
