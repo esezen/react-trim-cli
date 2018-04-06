@@ -44,9 +44,9 @@ routes: [
 		exact,
 	},
 	{
-		path: '/feed',
-		component: Feed,
-	},
+        path: '/feed',
+        component: Feed,
+    },
 	{
 		path: '*',
 		component: NotFound,

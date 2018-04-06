@@ -1,10 +1,11 @@
+import { Controller } from 'react-trim'
 import autoBind from 'react-autobind'
+import view from 'Views/Feed'
+import model from 'Models/Feed'
 
-@View 'Views/Feed'
-@Model 'Models/Feed'
-class Feed {
+class Feed extends Controller {
     constructor() {
-        super()
+        super({ view, model })
         autoBind(this)
 
         this.state = {
@@ -53,16 +54,6 @@ class Feed {
             }
         })
     }
-
-    render() {
-        /*
-         |
-         | The View can be called as a function or as JSX
-         | ----------------------------------------------
-         | View() <=> <View />
-         |
-         */
-
-        return <View />
-    }
 }
+
+export default Feed

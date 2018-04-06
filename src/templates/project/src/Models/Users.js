@@ -1,5 +1,9 @@
-class Users {
+import { Model } from 'react-trim'
+
+class Users extends Model {
     constructor() {
+        super()
+
         this.state = {
             id: 4,
             execute: true,
@@ -12,6 +16,12 @@ class Users {
                 3: { name: 'Omar Salem', username: '@omar94' }
             }
         }
+
+        /**
+         * Create a custom command to use in your setState object
+         */
+
+        this.setCommand(this.iff)
 
         /**
          * This binds an onChange listener so when `this.state.users`
@@ -81,7 +91,6 @@ class Users {
     | --------------------------------------------------------
     */
 
-    @command
     iff(array, original) {
         return array[0] ? array[1] : original
     }
@@ -155,3 +164,5 @@ class Users {
         })
     }
 }
+
+export default new Users()

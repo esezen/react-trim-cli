@@ -1,7 +1,10 @@
+import { Model } from 'react-trim'
 import Users from './Users'
 
-class Feed {
+class Feed extends Model {
     constructor() {
+        super()
+
         this.state = {
             posts: [
                 {
@@ -48,12 +51,12 @@ class Feed {
     postsWithUsers() {
         return this.state.posts.map(({ user }, id) => ({
             ...this.state.posts[id],
-            user: Users.getUser(user)
+            user:  Users.getUser(user)
         }))
     }
 
     getUsers() {
-        return Users.state.users
+        return  Users.state.users
     }
 
     submitPost(post) {
@@ -68,3 +71,5 @@ class Feed {
         })
     }
 }
+
+export default new Feed()
