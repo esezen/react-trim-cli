@@ -19,7 +19,7 @@ program
       return;
     }
 
-    console.log("Creating a new React trim app in " + (CURR_DIR + '/' + folderName + '/').bold.green + "\n");
+    console.log("Creating a new React Trim app in " + (CURR_DIR + '/' + folderName + '/').bold.green + "\n");
     
     console.log(boxen('All Complete!'.bold.green, {
       padding: 1, 
