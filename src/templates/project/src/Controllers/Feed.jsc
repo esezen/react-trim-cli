@@ -10,14 +10,11 @@
 |
 */
 
-import autoBind from 'react-autobind'
-
+@Autobind
 @View 'Views/Feed'
 @Model 'Models/Feed'
 class Feed {
     constructor() {
-        autoBind(this)
-
         this.state = {
             post: {
                 user: '',
