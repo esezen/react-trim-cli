@@ -86,7 +86,10 @@ function processAction(command, name) {
         break;
     }
   } else {
-    console.log("You are not inside a react-trim project");
+    console.log(boxen("You are not inside a react-trim project. Make sure a " + ".react-trim".bold.red + " file exists inside the root directory of your project.", {
+      padding: 1, 
+      borderColor: 'red' 
+    }));
   }
 }
 function findProjectRoot() {

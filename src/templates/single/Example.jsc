@@ -1,7 +1,3 @@
-class Example {
-  render() {
-    // Specify: @View 'path/to/view'
-    // Then: return View.apply(this)
-    return null
-  }
-}
+@View 'Views/View'
+@Model 'Models/Model'
+class Example {}
