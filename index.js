@@ -133,12 +133,15 @@ function createDirectoryContents(templatePath, newProjectPath) {
     if (stats.isFile()) {
       if (file === "package.json") {
         contents = fs.readFileSync(origFilePath, "utf8");
-        contents = contents.replace(/\"version\"\:\s*\"(.*?)\"\s*\,/, function(version) {
-          return [
-            '"version": "0.1.0",',
-            '\t"private": true,'
-          ].join('\n')
-        });
+        contents = contents
+          .replace(/\"name\"\:\s*\"react-trim-app\"/, `"name": "${ newProjectPath }"`)
+          .replace(/\"version\"\:\s*\"(.*?)\"\s*\,/, function(version) {
+            return [
+              '"version": "0.1.0",',
+              '  "private": true,'
+            ].join('\n')
+          })
+        ;
       } else {
         contents = fs.readFileSync(origFilePath);
       }
