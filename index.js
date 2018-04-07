@@ -12,31 +12,31 @@ program
   .action(function(folderName, cmd) {
     if (fs.existsSync(`${CURR_DIR}/${folderName}`)) {
       console.log(boxen("This Directory " + `${CURR_DIR}/${folderName}`.bold.red + " Already Exists", {
-        padding: 1, 
-        borderColor: 'red' 
+        padding: 1,
+        borderColor: 'red'
       }));
 
       return;
     }
 
     console.log("Creating a new React Trim app in " + (CURR_DIR + '/' + folderName + '/').bold.green + "\n");
-    
+
     console.log(boxen('All Complete!'.bold.green, {
-      padding: 1, 
-      borderColor: 'green' 
+      padding: 1,
+      borderColor: 'green'
     }));
 
     console.log("\nCommands to run within application directory:");
 
     console.log("\n   npm start".bold.blue);
     console.log("      Starts the development server.".bold)
-    
+
     console.log("\n   npm run build".bold.blue);
     console.log("      Bundles the app into static files for production.".bold);
 
     console.log("\n   npm test".bold.blue);
     console.log("      Starts the test runner.".bold);
-    
+
     console.log("\nTo begin, type the following:".bold);
     console.log("\n   cd " + (CURR_DIR + '/' + folderName + '/').bold.green);
     console.log("   npm install".bold.blue);
@@ -87,8 +87,8 @@ function processAction(command, name) {
     }
   } else {
     console.log(boxen("You are not inside a react-trim project. Make sure a " + ".react-trim".bold.red + " file exists inside the root directory of your project.", {
-      padding: 1, 
-      borderColor: 'red' 
+      padding: 1,
+      borderColor: 'red'
     }));
   }
 }
@@ -133,11 +133,12 @@ function createDirectoryContents(templatePath, newProjectPath) {
     if (stats.isFile()) {
       if (file === "package.json") {
         contents = fs.readFileSync(origFilePath, "utf8");
-        if (contents.slice(12, 22) === "react-trim") {
-          contents = contents.slice(0, 47) + '\t"private": true,\n' + contents.slice(47);
-          contents = contents.slice(0, 38) + "0.1.0" + contents.slice(43);
-          contents = contents.slice(0, 12) + newProjectPath + contents.slice(22) + '\t';
-        }
+        contents = contents.replace(/\"version\"\:\s*\"(.*?)\"\s*\,/, function(version) {
+          return [
+            '"version": "0.1.0",',
+            '\t"private": true,'
+          ].join('\n')
+        });
       } else {
         contents = fs.readFileSync(origFilePath);
       }
