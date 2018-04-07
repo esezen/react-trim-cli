@@ -39,7 +39,7 @@ class Example extends Model {
         | as illustrated below.
         |
         */
-        this.setCommand(this.my_toggle)
+        this.setCommand('$my_toggle', this.my_toggle)
     }
 
     /*

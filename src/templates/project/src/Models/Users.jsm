@@ -107,8 +107,7 @@ class Users {
 
     removeExecute() {
         this.setState({
-            execute: { $set: false
-            }
+            execute: { $set: false }
         })
     }
 

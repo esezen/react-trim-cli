@@ -1,6 +1,6 @@
 {
-  "short_name": "react-trim-app",
-  "name": "React Trim Sample Project",
+  "short_name": "React Trim App",
+  "name": "Create React Trim App Sample",
   "icons": [
     {
       "src": "favicon.ico",
