@@ -17,31 +17,31 @@ npm install
 
 The CLI tool can be used within any directory of an existing react-trim project.
 
-###To see all the options available.
+### To see all the options available.
 
 ```
 trim --help
 ```
 
-###To create a new project using React Trim
+### To create a new project using React Trim
 
 ```
 trim new <projectName>
 ```
 
-###To create a new controller
+### To create a new controller
 
 ```
 trim make:controller <name>
 ```
 
-###To create a new model
+### To create a new model
 
 ```
 trim make:model <name>
 ```
 
-###To create a new view
+### To create a new view
 
 ```
 trim make:view <name>
