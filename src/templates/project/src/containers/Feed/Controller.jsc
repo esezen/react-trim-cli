@@ -4,17 +4,18 @@
 | --------------------------------------------------------
 | The following file is using the `js-cntrl-loader` to
 | automate some code like extending Controller class.
-| Checkout other file in the Controller folder that don't
-| use the `js-cntrl-loader` with a `.js` extension to
-| understand a little better how `react-trim` works.
 |
 */
 
 @Autobind
-@View 'Views/Feed'
-@Model 'Models/Feed'
+@View './View'
+@Model './Model'
 class Feed {
-    constructor() {
+    /**
+     * Passing the props to the constructor
+     * will pass it to super automatically
+     */
+    constructor(props) {
         this.state = {
             post: {
                 user: '',

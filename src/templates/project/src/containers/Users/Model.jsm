@@ -4,9 +4,7 @@
 | --------------------------------------------------------
 | The following file is using the `js-model-loader` to
 | automate some code like setting Commands using the @command
-| Decorator. Checkout other file in the Models folder that
-| don't use the `js-model-loader` with a `.js` extension to
-| understand a little better how `react-trim` works.
+| Decorator.
 |
 */
 

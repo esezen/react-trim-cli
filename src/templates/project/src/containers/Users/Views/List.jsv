@@ -1,0 +1,19 @@
+<import component='Segment' from='semantic-ui-react' />
+<import component='Button' from='semantic-ui-react' />
+
+<Segment.Group>
+    <Segment style='display: flex' @for={ user, id in this.model.getWithExtraProp() } key={ id }>
+        { user.id }: { user.name } - { user.username } - { user.school }
+        <Button
+        circular
+        style='margin-left: auto'
+        size='tiny'
+        icon='close'
+        onClick={ this.delUser.bind(null, user.id) } />
+        <Button
+        circular
+        size='tiny'
+        icon='edit'
+        onClick={ () => this.model.updateUser(user.id)  } />
+    </Segment>
+</Segment.Group>

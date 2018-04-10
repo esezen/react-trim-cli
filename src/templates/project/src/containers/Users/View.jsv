@@ -1,0 +1,11 @@
+<import component='Segment' from='semantic-ui-react' />
+<import component='Grid' from='semantic-ui-react' />
+
+<Grid centered doubling stackable id='grid'>
+	<Grid.Column width='10'>
+		<Segment basic>
+            <Views.Form></Views.Form>
+            <Views.List></Views.List>
+		</Segment>
+	</Grid.Column>
+</Grid>

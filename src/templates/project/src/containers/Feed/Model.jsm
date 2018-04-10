@@ -1,21 +1,14 @@
-import { Model } from 'react-trim'
-import Users from './Users'
+import Users from 'Users/Model'
 
-class Feed extends Model {
+class Feed {
     constructor() {
-        super()
-
         this.state = {
             posts: [
                 {
                     date: '4 Days Ago',
                     user: 1,
                     likes: 3,
-                    content:   `
-                        In the name of Allah the most gracious the most merciful.
-                        We being by praising Allah as he is the most deserving of pairse.
-                        We see refuge by Allah from the evil of hour selves and the evil of our actions...
-                    `
+                    content:   `This news feed is amazing, it has to be built using reac-trim`
                 },
                 {
                     date: '6 Days Ago',
@@ -71,5 +64,3 @@ class Feed extends Model {
         })
     }
 }
-
-export default new Feed()

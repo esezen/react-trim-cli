@@ -1,15 +1,5 @@
 import { Routes } from 'react-trim'
 
-/**
- * Checkout Advanced Example
- * --------------------------------------------------------
- * This only outputs the object
- * and does not define actual routes
- * --------------------------------------------------------
- * Project Routes are defined below
- */
-import './routes.example'
-
 /*
  | --------------------------------------------------------
  | Router components
@@ -18,11 +8,11 @@ import './routes.example'
  |
  */
 
-import Template from 'Views/Template'
-import NotFound from 'Views/NotFound'
-import Example from 'Controllers/Example'
-import UsersList from 'Controllers/UsersList'
-import Feed from 'Controllers/Feed'
+import Template from 'Template/View'
+import NotFound from 'NotFound/View'
+import Example from 'Example/Controller'
+import User from 'Users/Controller'
+import Feed from 'Feed/Controller'
 
 /*
  | --------------------------------------------------------
@@ -46,36 +36,11 @@ const exact = true
  | in a route.
  */
 
-/**
- * The following method defines template
- * component that will be rendered in all routes.
- *
- * @param {function} React Component
- */
+
 Routes.all(Template)
 
-/**
- * The following method routes a path to a component.
- *
- * @param {path}        String
- * @param {function}    React Component
- * @param {object}      Extra Props
- */
-
 Routes.route('/', Example, { exact })
-Routes.route('/users', UsersList, { exact })
+Routes.route('/users', User, { exact })
 Routes.route('/feed', Feed)
 
-/**
- * When all routes fail
- * this will render.
- *
- * Define this last.
- */
 Routes.route('*', NotFound)
-
-/**
- * This exports the routes to
- * be used by react-router-config
- */
-export default Routes.export()

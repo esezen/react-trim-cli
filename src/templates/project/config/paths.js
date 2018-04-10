@@ -49,7 +49,12 @@ module.exports = {
   appSrc: resolveApp('src'),
   yarnLockFile: resolveApp('yarn.lock'),
   testsSetup: resolveApp('src/setupTests.js'),
-  appNodeModules: resolveApp('src/Resources'),
+  appNodeModules: resolveApp('src/resources'),
   publicUrl: getPublicUrl(resolveApp('package.json')),
   servedPath: getServedPath(resolveApp('package.json')),
+  accessible: [
+    resolveApp('src/containers'),
+    resolveApp('src/components'),
+    resolveApp('src/resources')
+  ]
 };

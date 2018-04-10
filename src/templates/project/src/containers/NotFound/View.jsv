@@ -1,4 +1,4 @@
-<import default='Styles' from='styles/NotFound' />
+<import default='Styles' from='styles/notfound' />
 <import component='Link' from='react-router-dom' />
 <import component='Header' from='semantic-ui-react' />
 <import component='Divider' from='semantic-ui-react' />

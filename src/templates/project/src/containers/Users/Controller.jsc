@@ -1,14 +1,11 @@
-import { Controller } from 'react-trim'
-import autoBind from 'react-autobind'
-import view from 'Views/UsersList'
-import model from 'Models/Users'
-
-class UsersList extends Controller {
-    constructor() {
-        super({ view, model })
-        autoBind(this)
-    }
-
+@Autobind
+@Model './Model'
+@View './View'
+@Views {
+    Form: './Views/Form',
+    List: './Views/List',
+}
+class Users extends Controller {
     componentDidMount() {
         this.model.asyncAppendUser({
             name: 'Async User',
@@ -40,5 +37,3 @@ class UsersList extends Controller {
         })
     }
 }
-
-export default UsersList

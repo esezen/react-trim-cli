@@ -1,7 +1,7 @@
 import { Controller } from 'react-trim'
 import autoBind from 'react-autobind'
-import view from 'Views/Example'
-import model from 'Models/Example'
+import view from './View'
+import model from './Model'
 
 class Example extends Controller {
     constructor() {

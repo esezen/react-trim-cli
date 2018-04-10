@@ -1,9 +1,11 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { renderRoutes } from 'react-router-config'
-import { BrowserRouter } from 'react-router-dom'
 import registerServiceWorker from 'scripts/registerServiceWorker'
-import Routes from './routes'
+import { BrowserRouter } from 'react-router-dom'
+import { Routes } from 'react-trim'
+
+import './routes'
+import './routes.doc'
 
 /*
  | --------------------------------------------------------
@@ -15,7 +17,7 @@ import Routes from './routes'
 
 ReactDOM.render((
 	<BrowserRouter>
-		{ renderRoutes([ Routes ]) }
+		{ Routes.render() }
 	</BrowserRouter>
 ), document.getElementById('root'))
 

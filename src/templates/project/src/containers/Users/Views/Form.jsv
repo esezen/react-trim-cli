@@ -1,0 +1,17 @@
+<import component='Form' from='semantic-ui-react' />
+
+<Form>
+    <Form.Group widths='equal'>
+        <Form.Input
+        value={ this.model.state.newuser.name }
+        placeholder='Name'
+        onInput={ this.updateName }/>
+        <Form.Input
+        value={ this.model.state.newuser.username.substr(1) }
+        placeholder='Username'
+        onInput={ this.updateUsername }/>
+        <Form.Button fluid onClick={ this.addUser }>
+            { this.model.state.status } User #{ this.model.state.id }
+        </Form.Button>
+    </Form.Group>
+</Form>
