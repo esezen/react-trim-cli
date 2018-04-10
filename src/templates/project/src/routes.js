@@ -1,3 +1,15 @@
+import { Routes } from 'react-trim'
+
+/**
+ * Checkout Advanced Example
+ * --------------------------------------------------------
+ * This only outputs the object
+ * and does not define actual routes
+ * --------------------------------------------------------
+ * Project Routes are defined below
+ */
+import './routes.example'
+
 /*
  | --------------------------------------------------------
  | Router components
@@ -26,29 +38,44 @@ const exact = true
  | --------------------------------------------------------
  | Routes
  | --------------------------------------------------------
- | Map route to application using react-router
+ | Map route to application using react-trim. This Routes
+ | object is a helper tool for creating an object that is
+ | used by react-router-config.
  |
+ | Note: the order matters unless you pass the exact prop
+ | in a route.
  */
 
-export default {
-component: Template,
-routes: [
-	{
-		path: '/',
-		component: Example,
-		exact,
-	},
-	{
-		path: '/users',
-		component: UsersList,
-		exact,
-	},
-	{
-        path: '/feed',
-        component: Feed,
-    },
-	{
-		path: '*',
-		component: NotFound,
-	},
-]}
+/**
+ * The following method defines template
+ * component that will be rendered in all routes.
+ *
+ * @param {function} React Component
+ */
+Routes.all(Template)
+
+/**
+ * The following method routes a path to a component.
+ *
+ * @param {path}        String
+ * @param {function}    React Component
+ * @param {object}      Extra Props
+ */
+
+Routes.route('/', Example, { exact })
+Routes.route('/users', UsersList, { exact })
+Routes.route('/feed', Feed)
+
+/**
+ * When all routes fail
+ * this will render.
+ *
+ * Define this last.
+ */
+Routes.route('*', NotFound)
+
+/**
+ * This exports the routes to
+ * be used by react-router-config
+ */
+export default Routes.export()
