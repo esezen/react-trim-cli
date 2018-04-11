@@ -6,7 +6,7 @@
 <load from='styles/semantic/semantic.min.css' />
 <load from='styles/template' />
 
-<React.Fragment @stateless>
+<React.Fragment>
     <Menu inverted color='red' fixed='top'>
         <Menu.Item as={ Link } to='/' active={ isRoute('/') }>
         Basic Example

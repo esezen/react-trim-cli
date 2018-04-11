@@ -10,14 +10,6 @@ To install [react-trim-cli](https://github.com/esezen/react-trim-cli) run:
 npm i react-trim-cli -g
 ```
 
-## Loaders
-
-| Loaders | Repository |
-| --- | --- |
-| Controller | [js-cntrl-loader](https://github.com/abubakir1997/js-cntrl-loader) |
-| Model | [js-model-loader](https://github.com/abubakir1997/js-model-loader) |
-| View | [js-view-loader](https://github.com/abubakir1997/js-view-loader) |
-
 ## Documentation
 
 The application template is fully documented and contains simple and advance example use cases. You will note the `/containers/Example` folder contain javascript without the use of any loaders. The rest of the folders utilities the loaders that are used along with `react-trim`. 

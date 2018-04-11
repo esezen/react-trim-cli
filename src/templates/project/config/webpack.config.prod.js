@@ -181,7 +181,7 @@ module.exports = {
                         compact: true,
                     },
                 },
-                require.resolve('js-cntrl-loader'),
+                require.resolve('react-trim/loader/controller'),
             ]
           },
           // Model Loader
@@ -195,7 +195,7 @@ module.exports = {
                         compact: true,
                     },
                 },
-                require.resolve('js-model-loader'),
+                require.resolve('react-trim/loader/model'),
             ]
           },
           // View Loader
@@ -213,7 +213,7 @@ module.exports = {
                     },
                 },
                 {
-                    loader: require.resolve('js-view-loader'),
+                    loader: require.resolve('react-trim/loader/view'),
                     options: {
                         modules: "es6"
                     }
