@@ -1,8 +1,6 @@
-import Users from 'Users/Model'
-
 class Feed {
-    constructor() {
-        this.state = {
+    initState() {
+        return {
             posts: [
                 {
                     date: '4 Days Ago',
@@ -39,17 +37,6 @@ class Feed {
         const monthIndex = date.getMonth()
         const year = date.getFullYear()
         return day + ' ' + monthNames[monthIndex] + ' ' + year
-    }
-
-    postsWithUsers() {
-        return this.state.posts.map(({ user }, id) => ({
-            ...this.state.posts[id],
-            user:  Users.getUser(user)
-        }))
-    }
-
-    getUsers() {
-        return  Users.state.users
     }
 
     submitPost(post) {

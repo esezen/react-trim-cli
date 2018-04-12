@@ -2,24 +2,15 @@ import { Model } from 'react-trim'
 
 class Example extends Model {
     constructor() {
-        /**
-         * Must call super before anything.
-         */
-        super()
-
         /*
         | --------------------------------------------------------
-        | State
+        | Super
         | --------------------------------------------------------
-        | The State is shared data in the form of props within
-        | the controllers layer.
+        | The super method must be called prior to any code.
+        | It essentially creates the redux store.
         |
         */
-        this.state = {
-            execute: true,
-            someProps: 'I am a Props!',
-            someBool: false
-        }
+        super()
 
         /*
         | --------------------------------------------------------
@@ -40,6 +31,25 @@ class Example extends Model {
         |
         */
         this.setCommand('$my_toggle', this.my_toggle)
+    }
+
+    /*
+    | --------------------------------------------------------
+    | Inital State
+    | --------------------------------------------------------
+    | This method sets the inital state if not defined it
+    | will default to an empty object `{}`
+    |
+    */
+    initState() {
+        return {
+            execute: true,
+            someProps: 'I am a Props!',
+            someBool: false,
+            level1: {
+                level2: 1
+            }
+        }
     }
 
     /*
@@ -141,4 +151,4 @@ class Example extends Model {
 |    manipulation where done in another object.
 */
 
-export default new Example()
+export default Example

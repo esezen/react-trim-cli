@@ -10,6 +10,9 @@
 @Autobind
 @View './View'
 @Model './Model'
+@Models {
+    users: 'Users/Model'
+}
 class Feed {
     /**
      * Passing the props to the constructor
@@ -24,8 +27,22 @@ class Feed {
         }
     }
 
+    mapStateToConnect({ model, users }) {
+        return {
+            posts: model.posts,
+            users: users.users
+        }
+    }
+
+    postsWithUsers() {
+        return this.model.state.posts.map(({ user }, id) => ({
+            ...this.model.state.posts[id],
+            user:  this.models.users.getUser(user)
+        }))
+    }
+
     getUsers() {
-        const users = this.model.getUsers()
+        const { users } = this.models.users.state
 
         return Object.keys(users).map(id => ({
             key: id,

@@ -32,7 +32,7 @@
 			placeholder='Write to the world!' />
 		</Form>
 	</Grid.Column>
-	<Grid.Column width='10' @for={ post, key in this.model.postsWithUsers() } key={ key }>
+	<Grid.Column width='10' @for={ post, key in this.postsWithUsers() } key={ key }>
 		<Segment>
 			<Feed size='large'>
 				<Feed.Event>

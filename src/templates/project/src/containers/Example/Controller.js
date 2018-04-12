@@ -59,6 +59,12 @@ class Example extends Controller {
         }
     }
 
+    mapStateToConnect({ someProps }) {
+        return {
+            someProps
+        }
+    }
+
     componentDidMount() {
         this.model.asyncToggleProps()
     }

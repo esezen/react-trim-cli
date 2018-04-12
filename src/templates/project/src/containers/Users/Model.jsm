@@ -10,7 +10,16 @@
 
 class Users {
     constructor() {
-        this.state = {
+        /**
+         * This binds an onChange listener so when `this.state.users`
+         * changes the `this.updateId` method is executed.
+         */
+
+        this.onChange('users', this.updateId)
+    }
+
+    initState() {
+        return {
             id: 4,
             execute: true,
             update: true,
@@ -22,13 +31,6 @@ class Users {
                 3: { name: 'Omar Salem', username: '@omar94' }
             }
         }
-
-        /**
-         * This binds an onChange listener so when `this.state.users`
-         * changes the `this.updateId` method is executed.
-         */
-
-        this.onChange('users', this.updateId)
     }
 
     updateId(prevState) {
