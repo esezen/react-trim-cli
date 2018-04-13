@@ -151,4 +151,4 @@ class Example extends Model {
 |    manipulation where done in another object.
 */
 
-export default Example
+export default new Example()

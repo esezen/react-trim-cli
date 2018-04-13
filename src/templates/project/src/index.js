@@ -1,11 +1,51 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
+import App from 'react-trim/core'
 import registerServiceWorker from 'scripts/registerServiceWorker'
-import { BrowserRouter } from 'react-router-dom'
-import { Routes } from 'react-trim'
 
-import './routes'
-import './routes.doc'
+/*
+ | --------------------------------------------------------
+ | Router components
+ | --------------------------------------------------------
+ | List all modules to map to a route
+ |
+ */
+
+import Template from 'Template/View'
+import NotFound from 'NotFound/View'
+import Example from 'Example/Controller'
+import User from 'Users/Controller'
+import Feed from 'Feed/Controller'
+
+/*
+ | --------------------------------------------------------
+ | Router Configuration
+ | --------------------------------------------------------
+ | Configure routers using the defined constants
+ |
+ */
+
+const exact = true
+
+/*
+ | --------------------------------------------------------
+ | Routes
+ | --------------------------------------------------------
+ | Map route to application using react-trim. This Routes
+ | object is a helper tool for creating an object that is
+ | used by react-router-config.
+ |
+ | Note: the order matters unless you pass the exact prop
+ | in a route.
+ */
+
+
+App.template(Template)
+
+App.route('/', Example, { exact })
+App.route('/users', User, { exact })
+App.route('/feed', Feed)
+
+App.route('*', NotFound)
+
 
 /*
  | --------------------------------------------------------
@@ -15,11 +55,7 @@ import './routes.doc'
  |
  */
 
-ReactDOM.render((
-	<BrowserRouter>
-		{ Routes.render() }
-	</BrowserRouter>
-), document.getElementById('root'))
+App.mount('root')
 
 /*
  | --------------------------------------------------------

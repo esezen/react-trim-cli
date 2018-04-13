@@ -1,7 +1,7 @@
-<import component='Routes' from='react-trim' />
+<import default='App' from='react-trim/core' />
+<import default='isRoute' from='scripts/routes' />
 <import component='Link' from='react-router-dom' />
 <import component='Menu' from='semantic-ui-react' />
-<import default='isRoute' from='scripts/routes' />
 
 <load from='styles/semantic/semantic.min.css' />
 <load from='styles/template' />
@@ -20,5 +20,5 @@
         News Feed Example
         </Menu.Item>
     </Menu>
-    { Routes.render(props.route) }
+    { App.render(props.route) }
 </React.Fragment>
