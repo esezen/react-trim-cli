@@ -2,18 +2,34 @@
 | --------------------------------------------------------
 | LOADER FILE
 | --------------------------------------------------------
-| The following file is using the `js-cntrl-loader` to
-| automate some code like extending Controller class.
-|
+| The following file is using react-trim's controller
+| loader automate some code like extending Controller class.
+| --------------------------------------------------------
+| @View
+| This decorator imports the view and passes it to the super
+| method in the constructor automtically. It takes either a
+| String or an Object as described in the `../Example/Controller.jsc`
+| file when describing the super parameters.
+| --------------------------------------------------------
+| @Model
+| This automates the model importing and passes it to the
+| super method as well. It is defined along side a String
+| which is the path to the Model file.
 */
 
 @View './View'
 @Model './Model'
 class Feed {
-    /**
-     * Passing the props to the constructor
-     * will pass it to super automatically
-     */
+    /*
+    | --------------------------------------------------------
+    | constructor(props)
+    | --------------------------------------------------------
+    | Passing the props to the constructor will pass it to
+    | super automatically when using the loader. Typing
+    | super(props) will raise a duplicate call error since the
+    | loader already injects the super call.
+    |
+    */
     constructor(props) {
         this.state = {
             post: {

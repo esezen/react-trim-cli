@@ -2,7 +2,7 @@
 | --------------------------------------------------------
 | LOADER FILE
 | --------------------------------------------------------
-| The following file is using the `js-model-loader` to
+| The following file is using react-trim's model loader to
 | automate some code like setting Commands using the @command
 | Decorator.
 |
@@ -10,11 +10,14 @@
 
 class Users {
     constructor() {
-        /**
-         * This binds an onChange listener so when `this.state.users`
-         * changes the `this.updateId` method is executed.
-         */
-
+        /*
+        | --------------------------------------------------------
+        | onChange
+        | --------------------------------------------------------
+        | This binds an onChange listener so when `this.state.users`
+        | changes the `this.updateId` method is executed.
+        |
+        */
         this.onChange('users', this.updateId)
     }
 
@@ -92,6 +95,10 @@ class Users {
     | Commands
     | --------------------------------------------------------
     | Create a custom command to use in your setState object
+    | --------------------------------------------------------
+    | @command
+    | This decorator automates the setCommand('iff', this.iff)
+    | in the constructor.
     */
 
     @command

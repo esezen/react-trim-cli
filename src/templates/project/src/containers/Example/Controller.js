@@ -9,34 +9,33 @@ class Example extends Controller {
         | Super
         | --------------------------------------------------------
         | The super method must be called before anything. It
-        | takes an object with three optional properties
-        | ({ model, view, views }). It simple attaches the three
-        | properties to the controller with proper bindings.
+        | takes an object with two optional properties and
+        | the standard React props and context parameters
+        | super({ model, view }, props, context). It simple attaches
+        | the two properties to the controller with proper bindings
+        | and configuration.
         | --------------------------------------------------------
         | Model:
-        | The model property is an object instance of a model
+        | The model property is a class instance of a model
         | imported in the begining of the file. It creates a model
         | property related to the controller that can be, later on,
-        | accessed using `this.model`.
+        | accessed using `this.model`. The model, also, re-renders
+        | the component when it's state is changed.
         | --------------------------------------------------------
         | View:
-        | The view property creates a view property related to the
-        | controller (`this.view`). If the model property is
-        | defined the view is connected to the model to render when
-        | changes have been made to the model state. It is also
-        | binded to the controller to gain access to all its methods
-        | and properties including the views property explained below.
-        | NOTE: you do not have to define a `render()` method if the
-        | view property is defiend. That is taken care of by the
-        | controller.
-        | --------------------------------------------------------
-        | Views:
-        | The views property creates a views property related to the
-        | controller (`this.views`). Generally it is used in the view
-        | layer and can be accessed using `Views.someView`. It is
-        | useful for breaking up the view layer into smaller
-        | stateful components. You can still, however, create stateless
-        | components and pass controller methods and propertiesvia props.
+        | The view property is binded to the controller to access
+        | all its properties and methods. It is most commonly
+        | imported as a seperate file wich exports a function the
+        | returns a React Element. This is mainly (but optionaly)
+        | used to seperate UI from Logic.
+        |
+        | The view can also be an object that contains mutliple
+        | views as a `{ key: view }` pair. If you are passing
+        | an object, a `render` key must be defined which is used
+        | as the entry point to the view within the render method
+        | of the Controller. The other views can be accessed from
+        | within the entry view by calling `<View.Key />`. There
+        | is an example for this in the `../Users/View.jsv` file.
         |
         */
         super({ view, model })
@@ -45,9 +44,10 @@ class Example extends Controller {
         | --------------------------------------------------------
         | State
         | --------------------------------------------------------
-        | Unlike the model, controller states are specific and
-        | only affect the controller and its related components.
-        | The model is used as a global state.
+        | Unlike the model, Controller states are specific and
+        | only affect the Controller and its related views.
+        | The model is used as a global/shared state accross
+        | mutliple Controllers.
         |
         */
         this.state = {
@@ -56,6 +56,23 @@ class Example extends Controller {
         }
     }
 
+    /*
+    | --------------------------------------------------------
+    | mapStateToConnect
+    | --------------------------------------------------------
+    | This method is used to define properties from the Model's
+    | state that should be connected to the Controller.
+    | In other words, it defines which properties in the Model's
+    | state fire the Controller's render method when changed. The
+    | entire state are still accessible inside `this.model.state`.
+    | However a property that is not specified in this method
+    | will be out of sync until a property that is connected
+    | changes.
+    | --------------------------------------------------------
+    | By default the entire Model's state is connected if this
+    | method is not defined.
+    |
+    */
     mapStateToConnect({ someProps }) {
         return {
             someProps
@@ -82,9 +99,9 @@ class Example extends Controller {
 | --------------------------------------------------------
 | Export
 | --------------------------------------------------------
-| For controllers it is required to export the class
-| definition rather than exporting an object instance
-| contrary to the model.
+| For Controllers it is required to export the class
+| definition rather than exporting the class instance
+| contrary to the Model.
 |
 */
 export default Example

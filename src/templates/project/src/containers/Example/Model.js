@@ -8,6 +8,17 @@ class Example extends Model {
         | --------------------------------------------------------
         | The super method must be called prior to any code.
         | It essentially creates the redux store.
+        | --------------------------------------------------------
+        | There is one optional parameter which is the Models.
+        | The Models paramter is an object containing mutliple
+        | Model class instances. It is used to bind a model or models
+        | to one model as dependencies. Binded models can be accessed
+        | within the model itself and any controller/view that uses
+        | the model. There is an example in the `../Feed/Model.jsm`
+        | file.
+        | --------------------------------------------------------
+        | Example: super({ users: UsersInstance })
+        | Results: this.users === UsersInstance
         |
         */
         super()
@@ -45,10 +56,7 @@ class Example extends Model {
         return {
             execute: true,
             someProps: 'I am a Props!',
-            someBool: false,
-            level1: {
-                level2: 1
-            }
+            someBool: false
         }
     }
 
