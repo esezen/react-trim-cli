@@ -1,3 +1,6 @@
+@Models {
+    users: 'Users/Model'
+}
 class Feed {
     initState() {
         return {
@@ -37,6 +40,10 @@ class Feed {
         const monthIndex = date.getMonth()
         const year = date.getFullYear()
         return day + ' ' + monthNames[monthIndex] + ' ' + year
+    }
+
+    getUser(id) {
+        return this.users.getUser(id);
     }
 
     submitPost(post) {

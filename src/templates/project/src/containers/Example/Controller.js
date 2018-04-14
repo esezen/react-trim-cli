@@ -1,5 +1,4 @@
 import { Controller } from 'react-trim'
-import autoBind from 'react-autobind'
 import view from './View'
 import model from './Model'
 
@@ -40,9 +39,7 @@ class Example extends Controller {
         | components and pass controller methods and propertiesvia props.
         |
         */
-
         super({ view, model })
-        autoBind(this)
 
         /*
         | --------------------------------------------------------
@@ -69,14 +66,14 @@ class Example extends Controller {
         this.model.asyncToggleProps()
     }
 
-    toggleState() {
+    toggleState = () => {
         this.setState({
             someState: !this.state.someBool ? 'I am a changed State!' : 'I am a State!',
             someBool: !this.state.someBool
         })
     }
 
-    toggleProps() {
+    toggleProps = () => {
         this.model.toggleProps()
     }
 }

@@ -3,7 +3,7 @@ import registerServiceWorker from 'scripts/registerServiceWorker'
 
 /*
  | --------------------------------------------------------
- | Router components
+ | Router Components
  | --------------------------------------------------------
  | List all modules to map to a route
  |
@@ -17,16 +17,6 @@ import Feed from 'Feed/Controller'
 
 /*
  | --------------------------------------------------------
- | Router Configuration
- | --------------------------------------------------------
- | Configure routers using the defined constants
- |
- */
-
-const exact = true
-
-/*
- | --------------------------------------------------------
  | Routes
  | --------------------------------------------------------
  | Map route to application using react-trim. This Routes
@@ -37,21 +27,30 @@ const exact = true
  | in a route.
  */
 
-
 App.template(Template)
 
-App.route('/', Example, { exact })
-App.route('/users', User, { exact })
-App.route('/feed', Feed)
+App.route('/', Example, {
+    exact: true,
+    title: 'Basic Example'
+})
+
+App.route('/users', User, {
+    exact: true,
+    title: 'Users List'
+})
+
+App.route('/feed', Feed, {
+    title: 'News Feed'
+})
 
 App.route('*', NotFound)
 
 
 /*
  | --------------------------------------------------------
- | View
+ | Mount
  | --------------------------------------------------------
- | Application view entry point
+ | Mount Application to the DOM
  |
  */
 

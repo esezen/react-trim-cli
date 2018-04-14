@@ -4,8 +4,8 @@
 <Grid centered doubling stackable id='grid'>
 	<Grid.Column width='10'>
 		<Segment basic>
-            <Views.Form></Views.Form>
-            <Views.List></Views.List>
+            <View.Form />
+            <View.List />
 		</Segment>
 	</Grid.Column>
 </Grid>

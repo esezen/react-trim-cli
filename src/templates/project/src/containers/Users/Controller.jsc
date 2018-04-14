@@ -1,11 +1,10 @@
-@Autobind
 @Model './Model'
-@View './View'
-@Views {
+@View {
+    render: './View',
     Form: './Views/Form',
-    List: './Views/List',
+    List: './Views/List'
 }
-class Users extends Controller {
+class Users {
     componentDidMount() {
         this.model.asyncAppendUser({
             name: 'Async User',
@@ -13,7 +12,7 @@ class Users extends Controller {
         })
     }
 
-    addUser() {
+    addUser = () => {
         this.model.addUser()
         this.model.updateNewUser({
             name: '',
@@ -21,17 +20,17 @@ class Users extends Controller {
         })
     }
 
-    delUser(id) {
+    delUser = id => {
         this.model.delUser(id)
     }
 
-    updateUsername({ target }) {
+    updateUsername = ({ target }) => {
         this.model.updateNewUser({
             username: `@${target.value}`
         })
     }
 
-    updateName({ target }) {
+    updateName = ({ target }) => {
         this.model.updateNewUser({
             name: target.value
         })

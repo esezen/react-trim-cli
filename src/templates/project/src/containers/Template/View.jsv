@@ -8,16 +8,14 @@
 
 <React.Fragment>
     <Menu inverted color='red' fixed='top'>
-        <Menu.Item as={ Link } to='/' active={ isRoute('/') }>
-        Basic Example
-        </Menu.Item>
-
-        <Menu.Item as={ Link } to='/users' active={ isRoute('/users') }>
-        Users Example
-        </Menu.Item>
-
-        <Menu.Item as={ Link } to='/feed' active={ isRoute('/feed') }>
-        News Feed Example
+        <Menu.Item
+            as={ Link }
+            @for={ route in App.routes }
+            key={ route.path }
+            to={ route.path }
+            active={ isRoute(route.path) }
+        >
+            { route.title }
         </Menu.Item>
     </Menu>
     { App.render(props.route) }

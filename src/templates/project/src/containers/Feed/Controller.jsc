@@ -7,12 +7,8 @@
 |
 */
 
-@Autobind
 @View './View'
 @Model './Model'
-@Models {
-    users: 'Users/Model'
-}
 class Feed {
     /**
      * Passing the props to the constructor
@@ -27,22 +23,8 @@ class Feed {
         }
     }
 
-    mapStateToConnect({ model, users }) {
-        return {
-            posts: model.posts,
-            users: users.users
-        }
-    }
-
-    postsWithUsers() {
-        return this.model.state.posts.map(({ user }, id) => ({
-            ...this.model.state.posts[id],
-            user:  this.models.users.getUser(user)
-        }))
-    }
-
-    getUsers() {
-        const { users } = this.models.users.state
+    getUsers = () => {
+        const { users } = this.model.users.state;
 
         return Object.keys(users).map(id => ({
             key: id,
@@ -52,7 +34,7 @@ class Feed {
         }))
     }
 
-    submitPost() {
+    submitPost = () => {
         this.model.submitPost(this.state.post)
         this.setState({
             post: {
@@ -62,7 +44,7 @@ class Feed {
         })
     }
 
-    updatePostUser(e, { value }) {
+    updatePostUser = (e, { value }) => {
         this.setState({
             post: {
                 ...this.state.post,
@@ -71,7 +53,7 @@ class Feed {
         })
     }
 
-    updatePostContent(e, { value }) {
+    updatePostContent = (e, { value }) => {
         this.setState({
             post: {
                 ...this.state.post,
