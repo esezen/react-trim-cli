@@ -14,6 +14,7 @@ import NotFound from 'NotFound/View'
 import Example from 'Example/Controller'
 import User from 'Users/Controller'
 import Feed from 'Feed/Controller'
+import Counter from 'Counter/Controller'
 
 /*
  | --------------------------------------------------------
@@ -32,6 +33,11 @@ App.template(Template)
 App.route('/', Example, {
     exact: true,
     title: 'Basic Example'
+})
+
+App.route('/counter', Counter, {
+    exact: true,
+    title: 'Counter'
 })
 
 App.route('/users', User, {

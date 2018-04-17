@@ -1,0 +1,11 @@
+<import component='Segment' from='semantic-ui-react' />
+<import component='Button' from='semantic-ui-react' />
+
+<Segment basic inverted padded='very' textAlign='center'>
+    <View.Count />
+    <View.Other />
+    <Button.Group>
+        <Button onClick={ () => this.model.incCount() } color='red'>Increment Count</Button>
+        <Button onClick={ () => this.model.incOther() } color='blue'>Increment Other</Button>
+    </Button.Group>
+</Segment>

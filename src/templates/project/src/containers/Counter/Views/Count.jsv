@@ -1,0 +1,6 @@
+<import component='Header' from='semantic-ui-react' />
+
+<Header inverted size='huge' color='red'>
+    <Header.Subheader>Count</Header.Subheader>
+    { this.model.state.count }
+</Header>

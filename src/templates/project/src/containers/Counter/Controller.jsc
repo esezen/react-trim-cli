@@ -1,0 +1,7 @@
+@Model './Model'
+@View {
+    render: './View',
+    Count: './Views/Count',
+    Other: './Views/Other'
+}
+class Counter {}
