@@ -1,7 +1,16 @@
-@Model './Model'
+/**
+ * Using the root model in this case.
+ */
+@Model 'app/model'
 @View {
     render: './View',
     Count: './Views/Count',
     Other: './Views/Other'
 }
-class Counter {}
+class Counter {
+    mapStateToConnect({ counter: { count } }) {
+        return {
+            count
+        }
+    }
+}

@@ -5,7 +5,7 @@
     <View.Count />
     <View.Other />
     <Button.Group>
-        <Button onClick={ () => this.model.incCount() } color='red'>Increment Count</Button>
-        <Button onClick={ () => this.model.incOther() } color='blue'>Increment Other</Button>
+        <Button onClick={ () => this.model.counter.incCount() } color='red'>Increment Count</Button>
+        <Button onClick={ () => this.model.counter.incOther() } color='blue'>Increment Other</Button>
     </Button.Group>
 </Segment>

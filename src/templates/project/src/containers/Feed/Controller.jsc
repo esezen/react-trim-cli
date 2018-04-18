@@ -17,8 +17,8 @@
 | which is the path to the Model file.
 */
 
-@View './View'
 @Model './Model'
+@View './View'
 class Feed {
     /*
     | --------------------------------------------------------

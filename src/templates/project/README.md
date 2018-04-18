@@ -12,9 +12,9 @@ npm i react-trim-cli -g
 
 ## Documentation
 
-The application template is fully documented and contains simple and advance example use cases. You will note the `/containers/Example` folder contain javascript without the use of any loaders. The rest of the folders utilities the loaders that are used along with `react-trim`. 
+The application template is fully documented and contains simple and advance examples to learn from. The `/containers/Example` folder contain javascript without the use of any loaders. The rest of the folders utilities the loaders that are used along with `react-trim`. 
 
-You can open the inspector in your browser and navigate to the sources path then open the file name while in development mode to see the generated file when using the loader.
+You can open the inspector in your browser and navigate to the sources path then open the file name while in development mode to see the generated files when using loaders.
 
 ### Controller
 

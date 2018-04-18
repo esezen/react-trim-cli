@@ -1,6 +1,6 @@
 import { Model } from 'react-trim'
 
-class Example extends Model {
+export class Example extends Model {
     constructor() {
         /*
         | --------------------------------------------------------

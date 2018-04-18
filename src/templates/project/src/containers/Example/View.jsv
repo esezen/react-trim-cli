@@ -13,7 +13,7 @@
 			</Header>
 			<Header inverted size='huge' textAlign='center' color='blue'>
 				Redux Props
-				<Header.Subheader>{ this.model.state.someProps }</Header.Subheader>
+				<Header.Subheader>{ this.model.example.state.someProps }</Header.Subheader>
 			</Header>
 			<Divider />
 			<Button.Group fluid inverted size='large'>

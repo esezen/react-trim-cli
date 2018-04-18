@@ -1,6 +1,20 @@
 import { Controller } from 'react-trim'
 import view from './View'
-import model from './Model'
+
+/*
+| --------------------------------------------------------
+| import model from 'app/model'
+| --------------------------------------------------------
+| This is a combined model that is being served to this
+| controller. You can define custom slices
+| from your model state as described below above the
+| mapStateToConnect method.
+|
+| Checkout the '../../app/model.js' file to see the combined
+| model.
+|
+*/
+import model from 'app/model'
 
 class Example extends Controller {
     constructor() {
@@ -73,14 +87,14 @@ class Example extends Controller {
     | method is not defined.
     |
     */
-    mapStateToConnect({ someProps }) {
+    mapStateToConnect({ example: { someProps } }) {
         return {
             someProps
         }
     }
 
     componentDidMount() {
-        this.model.asyncToggleProps()
+        this.model.example.asyncToggleProps()
     }
 
     toggleState = () => {
@@ -91,7 +105,7 @@ class Example extends Controller {
     }
 
     toggleProps = () => {
-        this.model.toggleProps()
+        this.model.example.toggleProps()
     }
 }
 

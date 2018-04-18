@@ -2,5 +2,5 @@
 
 <Header inverted size='huge' color='red'>
     <Header.Subheader>Count</Header.Subheader>
-    { this.model.state.count }
+    { this.model.counter.state.count }
 </Header>
