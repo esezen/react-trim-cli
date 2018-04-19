@@ -1,4 +1,4 @@
-export class Counter {
+class Counter {
     initState() {
         return {
             count: 1,

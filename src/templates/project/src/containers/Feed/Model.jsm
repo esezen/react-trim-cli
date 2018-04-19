@@ -1,7 +1,7 @@
 @Models {
     users: 'Users/Model'
 }
-export class Feed {
+class Feed {
     initState() {
         return {
             posts: [

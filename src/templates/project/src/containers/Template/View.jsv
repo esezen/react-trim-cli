@@ -8,15 +8,16 @@
 
 <React.Fragment>
     <Menu inverted color='red' fixed='top'>
-        <Menu.Item
-            as={ Link }
-            @for={ route in App.routes }
+        <virtual @for={ route in App.routes }>
+            <Menu.Item
+            @if={ route.path !== '*' }
             key={ route.path }
             to={ route.path }
             active={ isRoute(route.path) }
-        >
-            { route.title }
-        </Menu.Item>
+            as={ Link }>
+                { route.title }
+            </Menu.Item>
+        </virtual>
     </Menu>
     { App.render(props.route) }
 </React.Fragment>

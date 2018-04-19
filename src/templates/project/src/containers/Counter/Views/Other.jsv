@@ -1,7 +1,6 @@
 <import component='Header' from='semantic-ui-react' />
-<import component='Divider' from='semantic-ui-react' />
 
 <Header inverted size='huge' color='blue'>
-    <Header.Subheader>Other</Header.Subheader>
+    <Header.Subheader>Other (out of sync)</Header.Subheader>
     { this.model.counter.state.other }
 </Header>

@@ -1,5 +1,5 @@
 class Example {
-  constructor() {
-    this.state = {}
-  }
+	initState() {
+		return {}
+	}
 }

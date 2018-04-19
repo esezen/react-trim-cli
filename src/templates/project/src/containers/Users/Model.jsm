@@ -8,7 +8,7 @@
 |
 */
 
-export class Users {
+class Users {
     constructor() {
         /*
         | --------------------------------------------------------

@@ -1,8 +1,8 @@
 import { combineModels } from 'react-trim'
-import { Example as example } from 'Example/Model'
-import { Users as users } from 'Users/Model'
-import { Feed as feed } from 'Feed/Model'
-import { Counter as counter } from 'Counter/Model'
+import { Example } from 'Example/Model'
+import { Users } from 'Users/Model'
+import { Feed } from 'Feed/Model'
+import { Counter } from 'Counter/Model'
 
 /*
 | --------------------------------------------------------
@@ -22,8 +22,8 @@ import { Counter as counter } from 'Counter/Model'
 |
 */
 export default combineModels({
-    example,
-    users,
-    feed,
-    counter,
+    example: Example,
+    users: Users,
+    feed: Feed,
+    counter: Counter,
 })
