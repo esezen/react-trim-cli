@@ -1,4 +1,9 @@
-# ****** NOTE ******
-# React Trim CLI is officially renamed to [Anew-CLI](https://github.com/abubakir1997/anew-cli)
+# Announcement 
+### ~~React Trim~~ Renamed
 
-Anew CLI Repo: https://github.com/abubakir1997/anew-cli
+React Trim has officially been renamed to **Anew**
+
+### New Repository
+
+Anew-CLI: https://github.com/abubakir1997/anew-cli
+Anew: https://github.com/abubakir1997/anew
